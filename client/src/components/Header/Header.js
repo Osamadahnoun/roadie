@@ -4,8 +4,8 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <div>
-      <Navbar bg="light" expand="lg" className="p-3 c">
+    <div className="w-100">
+      <Navbar bg="light" expand="lg" className="p-3">
         <Container className="container">
           <div>
             <Navbar.Brand href="#home" className="title1">

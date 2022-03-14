@@ -1,0 +1,12 @@
+.footer {
+  background-color: WhiteSmoke;
+  width: 100%;
+  position: sticky;
+  top: 100%;
+  padding: 30px 25px;
+  text-align: center;
+}
+.footer p {
+  font-size: 2rem;
+  margin: 10px;
+}

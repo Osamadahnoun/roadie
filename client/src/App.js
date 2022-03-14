@@ -2,6 +2,7 @@ import React from "react";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Authorization from "./pages/Authorization/Authorization";
 import Allposts from "./pages/AllPosts/AllPosts";
+import AddPost from "./pages/AddPost/AddPost";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,8 +13,9 @@ function App() {
       {/* <LandingPage /> */}
       {/* <Authorization /> */}
       <Header />
-      <Allposts />
-      {/* <Footer /> */}
+      {/* <AddPost /> */}
+      {/* <Allposts /> */}
+      <Footer />
     </div>
   );
 }
