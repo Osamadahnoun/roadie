@@ -17,7 +17,7 @@ const postSchema = new Schema(
       maxlength: 50
     },
     // image of location?
-    cost : {
+    cost: {
       // find a way to have user select number of dollar signs instead of inputting a number?
       // or have their post show a number of dollar signs based on the number they input
       type: Number,
@@ -34,6 +34,9 @@ const postSchema = new Schema(
     accessibility: {
       type: String,
       maxlength: 100
+    },
+    other: {
+      type: String
     },
     createdAt: {
       type: Date,
