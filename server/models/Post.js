@@ -35,6 +35,9 @@ const postSchema = new Schema(
       type: String,
       maxlength: 100
     },
+    other: {
+      type: String
+    },
     createdAt: {
       type: Date,
       default: Date.now,
