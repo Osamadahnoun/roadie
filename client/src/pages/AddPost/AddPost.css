@@ -1,0 +1,14 @@
+.form {
+  background-color: whitesmoke;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.label p {
+  font-size: 2rem;
+}
+
+.logBtn {
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
