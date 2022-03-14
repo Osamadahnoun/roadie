@@ -6,7 +6,7 @@ const Posts = () => {
   return (
     <div className="d-flex flex-column align-items-center">
       <div className="container d-flex justify-content-center m-5">
-        <Card className="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8">
+        <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header flex-wrap">
             <p className="p-3">Osama Dahnoun</p>{" "}
             <p className="p-3">March 13, 2022</p>
@@ -55,7 +55,7 @@ const Posts = () => {
         </Card>
       </div>
       <div className="container d-flex justify-content-center m-5">
-        <Card className="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8">
+        <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header">
             <p className="p-3">Erinn Schneider</p>{" "}
             <p className="p-3">March 13, 2022</p>
@@ -104,7 +104,7 @@ const Posts = () => {
         </Card>
       </div>
       <div className="container d-flex justify-content-center m-5">
-        <Card className="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8">
+        <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header">
             <p className="p-3">Claire Wright</p>{" "}
             <p className="p-3">March 13, 2022</p>
@@ -153,7 +153,7 @@ const Posts = () => {
         </Card>
       </div>
       <div className="container d-flex justify-content-center m-5">
-        <Card className="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8">
+        <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header">
             <p className="p-3">Austin Gilmore</p>{" "}
             <p className="p-3">March 13, 2022</p>
