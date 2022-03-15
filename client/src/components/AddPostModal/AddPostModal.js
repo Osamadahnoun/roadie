@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -13,10 +13,44 @@ import {
   FormControl,
   FormLabel,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 
 const AddPostModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
+  const [formState, setFormState] = useState({
+    location: "",
+    cost: "",
+    post: "",
+    heritage: "",
+    places: "",
+    accessibility: "",
+    extra: "",
+  });
+
+  const { location, cost, post, heritage, places, accessibility, extra } =
+    formState;
+
+  const handleChange = (event) => {
+    setFormState({
+      ...formState,
+      [event.target.name]: event.target.value.trim(),
+    });
+  };
+  const handleSubmit = () => {
+    console.log(formState);
+    setFormState("");
+    onClose();
+    toast({
+      title: "Log Created!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+  };
 
   return (
     <>
@@ -34,44 +68,69 @@ const AddPostModal = ({ children }) => {
               <FormLabel htmlFor="location" fontSize="2rem" mt={5}>
                 Location Visited
               </FormLabel>
-              <Input id="location" type="text" placeholder="Enter location" />
+              <Input
+                name="location"
+                type="text"
+                placeholder="Enter location"
+                onChange={handleChange}
+                defaultValue={location}
+              />
               <FormLabel htmlFor="cost" fontSize="2rem" mt={5}>
                 Cost of Travel
               </FormLabel>
-              <Input id="cost" type="number" placeholder="Cost of Travel" />
-              <FormLabel htmlFor="cost" fontSize="2rem" mt={5}>
+              <Input
+                name="cost"
+                type="number"
+                placeholder="Cost of Travel"
+                onChange={handleChange}
+                defaultValue={cost}
+              />
+              <FormLabel htmlFor="post" fontSize="2rem" mt={5}>
                 We want to hear all about your trip!
               </FormLabel>
-              <Textarea placeholder="Tell us about your trip!" />
+              <Textarea
+                placeholder="Tell us about your trip!"
+                name="post"
+                onChange={handleChange}
+                defaultValue={post}
+              />
               <FormLabel fontSize="2rem" mt={5}>
                 The information below isn't required
               </FormLabel>
               <Textarea
-                id="cost"
-                type="number"
+                name="heritage"
+                type="text"
                 placeholder="Heritages"
                 mt={5}
+                onChange={handleChange}
+                defaultValue={heritage}
               />
 
               <Textarea
-                id="cost"
-                type="number"
+                name="places"
+                type="text"
                 placeholder="Places to Visit"
                 mt={5}
+                onChange={handleChange}
+                defaultValue={places}
               />
 
               <Textarea
-                id="cost"
-                type="number"
+                name="accessibility"
+                type="text"
                 placeholder="Accessibility"
                 mt={5}
+                onChange={handleChange}
+                defaultValue={accessibility}
               />
 
               <Textarea
-                id="cost"
-                type="number"
+                name="extra"
+                type="text"
                 placeholder="Feel free to add any additional info here!"
                 mt={5}
+                onChange={handleChange}
+                defaultValue={extra}
               />
             </FormControl>
           </ModalBody>
@@ -80,7 +139,9 @@ const AddPostModal = ({ children }) => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Share Log!</Button>
+            <Button variant="ghost" onClick={handleSubmit}>
+              Share Log!
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
