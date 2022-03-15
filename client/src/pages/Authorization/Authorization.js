@@ -6,7 +6,7 @@ const Authorization = () => {
   return (
     <div>
       <Login />
-      {/* <Signup /> */}
+      <Signup />
     </div>
   );
 };
