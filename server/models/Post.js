@@ -57,7 +57,7 @@ const postSchema = new Schema(
 );
 
 postSchema.virtual('commentCount').get(function() {
-  return this.comment.length;
+  return this.comments.length;
 });
 
 const Post = model('Post', postSchema);
