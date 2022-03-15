@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import AddPostModal from "../AddPostModal/AddPostModal";
 
 const Header = () => {
   return (
@@ -28,7 +29,9 @@ const Header = () => {
                   className="dropdown"
                 >
                   <NavDropdown.Item href="#action/3.1" className="text1">
-                    <p>Add a Post</p>
+                    <AddPostModal>
+                      <p>Add a Post</p>
+                    </AddPostModal>
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2" className="text1">
                     <p>Login</p>
