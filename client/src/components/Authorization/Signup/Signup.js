@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../../utils/mutations";
 
 import Auth from "../../../utils/auth";
 
@@ -43,9 +43,7 @@ const Signup = () => {
         <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            <form
-            onSubmit={handleFormSubmit}
-            >
+            <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
                 placeholder="Your username"
