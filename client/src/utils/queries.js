@@ -14,3 +14,121 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_ALL_USERS = gql`
+  query users {
+    users {
+      _id
+      username
+      email
+      posts {
+        _id
+        postText
+        location
+        cost
+        placesToVisit
+        heritages
+        accessibility
+        other
+        createdAt
+        username
+        commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+    friendCount
+    friends {
+      _id
+      email
+      username
+      }
+    }
+  }
+`;
+
+export const GET_SINGLE_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      posts {
+        _id
+        postText
+        location
+        cost
+        placesToVisit
+        heritages
+        accessibility
+        other
+        createdAt
+        username
+        commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+    friendCount
+    friends {
+      _id
+      username
+      email
+    }
+    }
+  }
+`;
+
+export const GET_ALL_POSTS = gql`
+  query posts ($username: String) {
+    posts(username: $username) {
+      _id
+      postText
+      location
+      cost
+      heritages
+      placesToVisit
+      accessibility
+      other
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const GET_SINGLE_POST = gql`
+  query post($id: ID!) {
+    post(_id: $id) {
+      _id
+      postText
+      location
+      cost
+      heritages
+      placesToVisit
+      accessibility
+      other
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
