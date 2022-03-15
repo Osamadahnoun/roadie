@@ -7,7 +7,7 @@ const typeDefs = gql`
     username: String
     email: String
     friendCount: Int
-    posts: [Posts]
+    posts: [Post]
     friends: [User]
   }
 
@@ -16,7 +16,7 @@ const typeDefs = gql`
     postText: String
     location: String
     cost: Int
-    heritages: Sring
+    heritages: String
     placesToVisit: String
     accessibility: String
     other: String
