@@ -41,7 +41,15 @@ const AddPostModal = ({ children }) => {
   };
   const handleSubmit = () => {
     console.log(formState);
-    setFormState("");
+    setFormState({
+      location: "",
+      cost: "",
+      post: "",
+      heritage: "",
+      places: "",
+      accessibility: "",
+      extra: "",
+    });
     onClose();
     toast({
       title: "Log Created!",
@@ -73,7 +81,7 @@ const AddPostModal = ({ children }) => {
                 type="text"
                 placeholder="Enter location"
                 onChange={handleChange}
-                defaultValue={location}
+                value={location}
               />
               <FormLabel htmlFor="cost" fontSize="2rem" mt={5}>
                 Cost of Travel
@@ -83,7 +91,7 @@ const AddPostModal = ({ children }) => {
                 type="number"
                 placeholder="Cost of Travel"
                 onChange={handleChange}
-                defaultValue={cost}
+                value={cost}
               />
               <FormLabel htmlFor="post" fontSize="2rem" mt={5}>
                 We want to hear all about your trip!
@@ -92,7 +100,7 @@ const AddPostModal = ({ children }) => {
                 placeholder="Tell us about your trip!"
                 name="post"
                 onChange={handleChange}
-                defaultValue={post}
+                value={post}
               />
               <FormLabel fontSize="2rem" mt={5}>
                 The information below isn't required
@@ -103,7 +111,7 @@ const AddPostModal = ({ children }) => {
                 placeholder="Heritages"
                 mt={5}
                 onChange={handleChange}
-                defaultValue={heritage}
+                value={heritage}
               />
 
               <Textarea
@@ -112,7 +120,7 @@ const AddPostModal = ({ children }) => {
                 placeholder="Places to Visit"
                 mt={5}
                 onChange={handleChange}
-                defaultValue={places}
+                value={places}
               />
 
               <Textarea
@@ -121,7 +129,7 @@ const AddPostModal = ({ children }) => {
                 placeholder="Accessibility"
                 mt={5}
                 onChange={handleChange}
-                defaultValue={accessibility}
+                value={accessibility}
               />
 
               <Textarea
@@ -130,7 +138,7 @@ const AddPostModal = ({ children }) => {
                 placeholder="Feel free to add any additional info here!"
                 mt={5}
                 onChange={handleChange}
-                defaultValue={extra}
+                value={extra}
               />
             </FormControl>
           </ModalBody>
