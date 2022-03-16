@@ -40,15 +40,18 @@ const Header = () => {
                       <p>Add a Post</p>
                     </AddPostModal>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="text1">
-                    <Link to="/auth">
-                      <p>Login</p>
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="text1">
-                    <p>Logout</p>
-                  </NavDropdown.Item>
                 </NavDropdown>
+                <Nav.Link className="text1">
+                  <Link to="/login">
+                    <p>Login</p>
+                  </Link>
+                </Nav.Link>
+                <Nav.Link className="text1">
+                  <Link to="/signup">
+                    <p>Signup</p>
+                  </Link>
+                </Nav.Link>
+
               </Nav>
             </Navbar.Collapse>
           </div>
