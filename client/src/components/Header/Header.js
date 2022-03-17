@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import {
   Navbar,
@@ -14,8 +14,24 @@ import Auth from "../../utils/auth";
 import Signup from "../Authorization/Signup/Signup";
 import Login from "../Authorization/Login/Login";
 
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const [getCheckout, {data}] = useLazyQuery(QUERY_CHECKOUT);
+
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
   return (
     <div className="w-100">
@@ -53,6 +69,7 @@ const Header = () => {
                     <p>Login/Sign Up</p>
                   </Nav.Link>
                 )}
+                <Nav.Link onClick={getCheckout}>Donate</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>
