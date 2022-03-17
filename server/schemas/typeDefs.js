@@ -39,6 +39,7 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
+    checkout: Checkout
   }
 
   type Mutation {
@@ -52,6 +53,10 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User
+  }
+
+  type Checkout {
+    session: ID
   }
 `;
 
