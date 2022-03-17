@@ -13,12 +13,12 @@ import {
   FormControl,
   FormLabel,
   Textarea,
-  useToast,
 } from "@chakra-ui/react";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../../utils/mutations";
 
 const AddPostModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
 
   const [formState, setFormState] = useState({
     location: "",
@@ -34,31 +34,42 @@ const AddPostModal = ({ children }) => {
     formState;
 
   const handleChange = (event) => {
-    console.log(formState);
     setFormState({
       ...formState,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value.trim(),
     });
   };
-  const handleSubmit = () => {
-    console.log(formState);
-    setFormState({
-      location: "",
-      cost: "",
-      post: "",
-      heritage: "",
-      places: "",
-      accessibility: "",
-      extra: "",
-    });
-    onClose();
-    toast({
-      title: "Log Created!",
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-      position: "top",
-    });
+
+  const [addPost, { error }] = useMutation(ADD_POST);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await addPost({
+        variables: {
+          location,
+          cost,
+          post,
+          heritage,
+          places,
+          accessibility,
+          extra,
+        },
+      });
+      setFormState({
+        location: "",
+        cost: "",
+        post: "",
+        heritage: "",
+        places: "",
+        accessibility: "",
+        extra: "",
+      });
+      onClose();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -141,6 +152,7 @@ const AddPostModal = ({ children }) => {
                 onChange={handleChange}
                 value={extra}
               />
+              {error && <span className="ml-2">Something went wrong...</span>}
             </FormControl>
           </ModalBody>
 
