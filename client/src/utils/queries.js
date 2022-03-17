@@ -132,3 +132,11 @@ export const GET_SINGLE_POST = gql`
     }
   }
 `;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout {
+    checkout {
+      session
+    }
+  }
+`;
