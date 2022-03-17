@@ -8,13 +8,13 @@ const postSchema = new Schema(
       type: String,
       required: 'You need to create a post!',
       minlength: 1,
-      maxlength: 100
+      maxlength: 280
     },
     location: {
       type: String,
       required: true,
       minlength: 1,
-      maxlength: 50
+      maxlength: 100
     },
     // image of location?
     cost: {
@@ -25,11 +25,11 @@ const postSchema = new Schema(
     },
     heritages: {
       type: String,
-      maxlength: 50
+      maxlength: 100
     },
     placesToVisit: {
       type: String,
-      maxlength: 50
+      maxlength: 100
     },
     accessibility: {
       type: String,
