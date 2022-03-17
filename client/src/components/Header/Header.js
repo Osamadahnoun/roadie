@@ -1,59 +1,113 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Modal,
+  Tab,
+} from "react-bootstrap";
 import AddPostModal from "../AddPostModal/AddPostModal";
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
+import Signup from "../Authorization/Signup/Signup";
+import Login from "../Authorization/Login/Login";
+
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const [getCheckout, {data}] = useLazyQuery(QUERY_CHECKOUT);
+
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+
   return (
     <div className="w-100">
       <Navbar bg="light" expand="lg" className="p-3">
         <Container className="container">
           <div>
             <Navbar.Brand className="title1">
-              <Link to="/allposts">
-                <p>Roadie</p>
-              </Link>
+              <p>Roadie</p>
             </Navbar.Brand>
           </div>
           <div>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link className="text1">
-                  <Link to="/allposts">
-                    <p>Home</p>
-                  </Link>
+                <Nav.Link className="text1" as={Link} to="/allposts">
+                  Home
                 </Nav.Link>
-                <Nav.Link className="text1">
-                  <Link to="/profile">
-                    <p>My Profile</p>
-                  </Link>
+                <Nav.Link className="text1" as={Link} to="/profile">
+                  My Profile
                 </Nav.Link>
                 <NavDropdown
                   title="Action"
                   id="basic-nav-dropdown"
                   className="dropdown"
                 >
-                  <NavDropdown.Item className="text1">
-                    <AddPostModal>
-                      <p>Add a Post</p>
-                    </AddPostModal>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="text1">
-                    <Link to="/auth">
-                      <p>Login</p>
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="text1">
-                    <p>Logout</p>
-                  </NavDropdown.Item>
+                  <NavDropdown.Item className="text1"></NavDropdown.Item>
                 </NavDropdown>
+                {/* if user is logged in show saved books and logout */}
+                {Auth.loggedIn() ? (
+                  <>
+                    <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  </>
+                ) : (
+                  <Nav.Link onClick={() => setShowModal(true)}>
+                    <p>Login/Sign Up</p>
+                  </Nav.Link>
+                )}
+                <Nav.Link onClick={getCheckout}>Donate</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>
         </Container>
       </Navbar>
+      {/* set modal data up */}
+      <Modal
+        size="lg"
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        aria-labelledby="signup-modal"
+      >
+        {/* tab container to do either signup or login component */}
+        <Tab.Container defaultActiveKey="login">
+          <Modal.Header closeButton>
+            <Modal.Title id="signup-modal">
+              <Nav variant="pills">
+                <Nav.Item>
+                  <Nav.Link eventKey="login">Login</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="signup">Sign Up</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Tab.Content>
+              <Tab.Pane eventKey="login">
+                <Login handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+              <Tab.Pane eventKey="signup">
+                <Signup handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+            </Tab.Content>
+          </Modal.Body>
+        </Tab.Container>
+      </Modal>
     </div>
   );
 };

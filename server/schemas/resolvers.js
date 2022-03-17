@@ -1,13 +1,17 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post } = require('../models');
 const { signToken } = require('../utils/auth');
+// the stipe key here is a test key - we may need to generate our own and keep it in a .env file
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__v -password');
+                    .select('-__v -password')
+                    .populate('friends')
+                    .populate('posts');
 
                 return userData;
             }
@@ -32,6 +36,37 @@ const resolvers = {
         },
         post: async (parent, { _id }) => {
             return Post.findOne({ _id })
+        },
+        checkout: async(parent, args, context) => {
+          const url = new URL(context.headers.referer).origin;
+          
+          const line_items = [];
+
+          const product = await stripe.products.create({
+            name: 'donation',
+            description: 'Donate to Roadie!'
+          });
+
+          const price = await stripe.prices.create({
+            product: product.id,
+            unit_amount: 10000,
+            currency: 'usd'
+          });
+
+          line_items.push({
+            price: price.id,
+            quantity: 1
+          });
+          
+          const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items,
+            mode: 'payment',
+            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${url}/`
+          });
+          
+          return { session: session.id };
         }
     },
 
@@ -98,6 +133,43 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in to add a friend!');
+        },
+        deleteFriend: async (parent, { friendId }, context) => {
+            if(context.user) {
+                const friendlessUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { friends: friendId } },
+                    { new: true }
+                ).populate('friends')
+
+                return friendlessUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete a friend!');
+        },
+        deletePost: async (parent, { postId }, context) => {
+            if(context.user) {
+                const postless = await Post.findOneAndDelete(
+                    { _id: postId }
+                )
+
+                return postless;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete your post!');
+        },
+        deleteComment: async (parent, { postId, commentId }, context) => {
+            if(context.user) {
+                const commentlessPost = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    { $pull: { comments: {_id: commentId }} },
+                    { new: true }
+                ).populate('comments')
+
+                return commentlessPost;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete your comment!');
         }
     }
 };

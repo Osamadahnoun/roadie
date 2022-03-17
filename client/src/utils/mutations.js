@@ -77,3 +77,39 @@ export const ADD_FRIEND = gql`
     }
   }
 `;
+
+export const DELETE_FRIEND = gql`
+  mutation deleteFriend($friendId: ID!) {
+    deleteFriend(friendId: $friendId) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+
+export const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($postId: ID!, $commentId: ID!) {
+    deleteComment(postId: $postId, commentId: $commentId) {
+      _id
+      postText
+      comments {
+        _id
+        commentBody
+      }
+    }
+  }
+`;
