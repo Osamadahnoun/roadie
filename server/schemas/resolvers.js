@@ -7,7 +7,9 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__v -password');
+                    .select('-__v -password')
+                    .populate('friends')
+                    .populate('posts');
 
                 return userData;
             }
@@ -98,6 +100,43 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in to add a friend!');
+        },
+        deleteFriend: async (parent, { friendId }, context) => {
+            if(context.user) {
+                const friendlessUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { friends: friendId } },
+                    { new: true }
+                ).populate('friends')
+
+                return friendlessUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete a friend!');
+        },
+        deletePost: async (parent, { postId }, context) => {
+            if(context.user) {
+                const postless = await Post.findOneAndDelete(
+                    { _id: postId }
+                )
+
+                return postless;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete your post!');
+        },
+        deleteComment: async (parent, { postId, commentId }, context) => {
+            if(context.user) {
+                const commentlessPost = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    { $pull: { comments: {_id: commentId }} },
+                    { new: true }
+                ).populate('comments')
+
+                return commentlessPost;
+            }
+
+            throw new AuthenticationError('You need to be logged in to delete your comment!');
         }
     }
 };
