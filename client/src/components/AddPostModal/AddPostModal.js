@@ -34,9 +34,10 @@ const AddPostModal = ({ children }) => {
     formState;
 
   const handleChange = (event) => {
+    console.log(formState);
     setFormState({
       ...formState,
-      [event.target.name]: event.target.value.trim(),
+      [event.target.name]: event.target.value,
     });
   };
   const handleSubmit = () => {
