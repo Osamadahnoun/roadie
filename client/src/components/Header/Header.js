@@ -23,9 +23,7 @@ const Header = () => {
         <Container className="container">
           <div>
             <Navbar.Brand className="title1">
-              <Link to="/allposts">
-                <p>Roadie</p>
-              </Link>
+              <p>Roadie</p>
             </Navbar.Brand>
           </div>
           <div>
@@ -33,21 +31,17 @@ const Header = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link className="text1" as={Link} to="/allposts">
-                  <p>Home</p>
+                  Home
                 </Nav.Link>
                 <Nav.Link className="text1" as={Link} to="/profile">
-                  <p>My Profile</p>
+                  My Profile
                 </Nav.Link>
                 <NavDropdown
                   title="Action"
                   id="basic-nav-dropdown"
                   className="dropdown"
                 >
-                  <NavDropdown.Item className="text1">
-                    <AddPostModal>
-                      <p>Add a Post</p>
-                    </AddPostModal>
-                  </NavDropdown.Item>
+                  <NavDropdown.Item className="text1"></NavDropdown.Item>
                 </NavDropdown>
                 {/* if user is logged in show saved books and logout */}
                 {Auth.loggedIn() ? (
@@ -56,7 +50,7 @@ const Header = () => {
                   </>
                 ) : (
                   <Nav.Link onClick={() => setShowModal(true)}>
-                    Login/Sign Up
+                    <p>Login/Sign Up</p>
                   </Nav.Link>
                 )}
               </Nav>

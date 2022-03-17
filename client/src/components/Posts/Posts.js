@@ -14,47 +14,35 @@ const Posts = ({ posts }) => {
           >
             <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <Card.Header className="d-flex justify-content-between header flex-wrap">
-                <Link to="/profile">
-                  <p className="p-3">{post.username}</p>{" "}
-                </Link>
-                <p className="p-3">{post.createdAt}</p>
+                <Link to="/profile">{post.username}</Link>
+                {post.createdAt}
               </Card.Header>
               <Link to="/post">
                 <Card.Body>
-                  <Card.Title className="title">
-                    <p>{post.location}</p>
+                  <Card.Title className="title">{post.location}</Card.Title>
+                  <Card.Text className="text">{post.postText}</Card.Text>
+                  <Card.Title className="border-top pt-2 title">
+                    Cost of Travel
+                  </Card.Title>
+                  <Card.Text className="text">{post.cost}</Card.Text>
+                  <Card.Title className="border-top pt-2 title">
+                    Heritages | Places to Visit | Accessibility
                   </Card.Title>
                   <Card.Text className="text">
-                    <p>{post.postText}</p>
+                    Heritages: {post.heritages}
+                  </Card.Text>
+                  <Card.Text className="text">
+                    Places to visit: {post.placesToVisit}
+                  </Card.Text>
+                  <Card.Text className="text">
+                    Accessibility: {post.accessibility}
                   </Card.Text>
                   <Card.Title className="border-top pt-2 title">
-                    <p>Cost of Travel</p>
+                    Extra Information
                   </Card.Title>
-                  <Card.Text className="text">
-                    <p>{post.cost}</p>
-                  </Card.Text>
-                  <Card.Title className="border-top pt-2 title">
-                    <p>Heritages | Places to Visit | Accessibility</p>
-                  </Card.Title>
-                  <Card.Text className="text">
-                    <p>Heritages: {post.heritages}</p>
-                  </Card.Text>
-                  <Card.Text className="text">
-                    <p>Places to visit: {post.placesToVisit}</p>
-                  </Card.Text>
-                  <Card.Text className="text">
-                    <p>Accessibility: {post.accessibility}</p>
-                  </Card.Text>
-                  <Card.Title className="border-top pt-2 title">
-                    <p>Extra Information</p>
-                  </Card.Title>
-                  <Card.Text className="text">
-                    <p>{post.other}</p>
-                  </Card.Text>
+                  <Card.Text className="text">{post.other}</Card.Text>
                   <Card.Title className="border-top title pt-2 d-flex align-items-center">
-                    <p>
-                      Comments: {post.commentCount} | Click to view or comment!
-                    </p>
+                    Comments: {post.commentCount} | Click to view or comment!
                   </Card.Title>
                 </Card.Body>
               </Link>
