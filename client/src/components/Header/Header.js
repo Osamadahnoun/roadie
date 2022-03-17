@@ -3,9 +3,10 @@ import "./Header.css";
 import { Navbar, Nav, Container, NavDropdown, Modal, Tab } from "react-bootstrap";
 import AddPostModal from "../AddPostModal/AddPostModal";
 import { Link } from "react-router-dom";
-import Auth from '../../utils/auth'
-import Signup from '../Authorization/Signup/Signup'
-import Login from '../Authorization/Login/Login'
+import Auth from '../../utils/auth';
+import Signup from '../Authorization/Signup/Signup';
+import Login from '../Authorization/Login/Login';
+
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -25,15 +26,11 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link className="text1">
-                  <Link to="/allposts">
+                <Nav.Link className="text1" as={Link} to="/allposts">
                     <p>Home</p>
-                  </Link>
                 </Nav.Link>
-                <Nav.Link className="text1">
-                  <Link to="/profile">
+                <Nav.Link className="text1" as={Link} to="/profile">
                     <p>My Profile</p>
-                  </Link>
                 </Nav.Link>
                 <NavDropdown
                   title="Action"
@@ -52,7 +49,7 @@ const Header = () => {
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)}><p>Login/Sign Up</p></Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
