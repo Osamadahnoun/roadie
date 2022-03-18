@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { GET_SINGLE_POST } from "../../utils/queries";
 import CommentList from "../../components/CommentList/CommentList";
 import Auth from "../../utils/auth";
-
+import { Link } from "react-router-dom";
 const SinglePost = () => {
   const { id: postId } = useParams();
 
@@ -25,7 +25,9 @@ const SinglePost = () => {
       <div className="container d-flex justify-content-center m-5">
         <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header flex-wrap">
-            <p className="p-3">{post.username}</p>{" "}
+            <Link to={`/profile/${post.username}`}>
+              <p className="p-3">{post.username}</p>
+            </Link>{" "}
             <p className="p-3">{post.createdAt}</p>
           </Card.Header>
           <Card.Body>

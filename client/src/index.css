@@ -32,3 +32,10 @@ code {
 .home-title {
   font-size: 2.25rem;
 }
+
+.profile-title {
+  font-size: 2.25rem;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+}
