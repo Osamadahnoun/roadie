@@ -37,27 +37,29 @@ const Comment = ({ postId }) => {
   };
 
   return (
-    <FormControl>
-      Character Count: {characterCount}/280
-      <Textarea
-        placeholder="Leave a comment here"
-        fontSize="1.5rem"
-        border="solid"
-        borderWidth="5px"
-        onChange={handleChange}
-        value={commentBody}
-      />
-      {error && <span className="ml-2">Something went wrong...</span>}
-      <Button
-        backgroundColor="whitesmoke"
-        mt="2"
-        width="100%"
-        onClick={handleSubmit}
-        fontSize="1.25rem"
-      >
-        Submit Comment
-      </Button>
-    </FormControl>
+    <div className="container">
+      <FormControl className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        Character Count: {characterCount}/280
+        <Textarea
+          placeholder="Leave a comment here"
+          fontSize="1.5rem"
+          border="solid"
+          borderWidth="5px"
+          onChange={handleChange}
+          value={commentBody}
+        />
+        {error && <span className="ml-2">Something went wrong...</span>}
+        <Button
+          backgroundColor="whitesmoke"
+          mt="2"
+          width="100%"
+          onClick={handleSubmit}
+          fontSize="1.25rem"
+        >
+          Submit Comment
+        </Button>
+      </FormControl>
+    </div>
   );
 };
 

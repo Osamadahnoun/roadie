@@ -21,7 +21,7 @@ const SinglePost = () => {
   }
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center w-100">
       <div className="container d-flex justify-content-center m-5">
         <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <Card.Header className="d-flex justify-content-between header flex-wrap">
