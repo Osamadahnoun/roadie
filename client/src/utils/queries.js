@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -7,6 +7,53 @@ export const QUERY_USER = gql`
       username
       email
       friendCount
+      friends {
+        _id
+        username
+      }
+      posts {
+        _id
+        postText
+        location
+        cost
+        heritages
+        placesToVisit
+        accessibility
+        other
+        createdAt
+        commentCount
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      friendCount
+      posts {
+        _id
+        postText
+        location
+        cost
+        heritages
+        placesToVisit
+        accessibility
+        other
+        createdAt
+        username
+        commentCount
+        comments {
+          _id
+          commentBody
+          createdAt
+          username
+        }
+      }
       friends {
         _id
         username
@@ -33,18 +80,18 @@ export const GET_ALL_USERS = gql`
         createdAt
         username
         commentCount
-      comments {
-        _id
-        commentBody
-        createdAt
-        username
+        comments {
+          _id
+          commentBody
+          createdAt
+          username
+        }
       }
-    }
-    friendCount
-    friends {
-      _id
-      email
-      username
+      friendCount
+      friends {
+        _id
+        email
+        username
       }
     }
   }
@@ -68,25 +115,25 @@ export const GET_SINGLE_USER = gql`
         createdAt
         username
         commentCount
-      comments {
-        _id
-        commentBody
-        createdAt
-        username
+        comments {
+          _id
+          commentBody
+          createdAt
+          username
+        }
       }
-    }
-    friendCount
-    friends {
-      _id
-      username
-      email
-    }
+      friendCount
+      friends {
+        _id
+        username
+        email
+      }
     }
   }
 `;
 
 export const GET_ALL_POSTS = gql`
-  query posts ($username: String) {
+  query posts($username: String) {
     posts(username: $username) {
       _id
       postText
