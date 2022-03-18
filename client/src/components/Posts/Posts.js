@@ -17,7 +17,7 @@ const Posts = ({ posts }) => {
                 <Link to="/profile">{post.username}</Link>
                 {post.createdAt}
               </Card.Header>
-              <Link to="/post">
+              <Link to={`/post/${post._id}`}>
                 <Card.Body>
                   <Card.Title className="title">{post.location}</Card.Title>
                   <Card.Text className="text">{post.postText}</Card.Text>

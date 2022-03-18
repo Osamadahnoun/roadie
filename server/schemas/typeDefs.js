@@ -39,6 +39,7 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
+    checkout: Checkout
   }
 
   type Mutation {
@@ -47,11 +48,18 @@ const typeDefs = gql`
     addPost(postText: String!, location: String!, cost: Int, heritages: String, placesToVisit: String, accessibility: String, other: String): Post
     addComment(postId: ID!, commentBody: String!): Post
     addFriend(friendId: ID!): User
+    deleteFriend(friendId: ID!): User
+    deletePost(postId: ID!): User
+    deleteComment(postId: ID! commentId: ID!): Post
   }
 
   type Auth {
     token: ID!
     user: User
+  }
+
+  type Checkout {
+    session: ID
   }
 `;
 
