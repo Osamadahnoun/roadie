@@ -13,7 +13,7 @@ import {
   FormControl,
   FormLabel,
   Textarea,
-  toast,
+  useToast,
 } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
@@ -21,6 +21,7 @@ import { GET_ALL_POSTS } from "../../utils/queries";
 
 const AddPostModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const [formState, setFormState] = useState({
     location: "",
