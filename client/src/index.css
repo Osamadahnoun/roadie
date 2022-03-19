@@ -39,3 +39,110 @@ code {
   padding: 20px;
   border-radius: 10px;
 }
+
+.w-100 {
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+}
+
+.card {
+  margin: 0 0 20px 0;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+}
+
+.card-header {
+  margin: 0;
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  padding: 2.5%;
+  font-size: 1.4rem;
+}
+
+.btn,
+.pill {
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  border: none;
+  color: var(--dark);
+  outline: none;
+  background-color: var(--secondary);
+  transition: all 0.5s;
+}
+
+.btn:hover,
+.pill:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
+.btn:hover a,
+.pill:hover a {
+  color: var(--secondary);
+}
+
+.btn-inline {
+  display: inline;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-four);
+}
+
+/* col-sm */
+@media screen and (min-width: 640px) {
+.justify-center-sm {
+  justify-content: center;
+}
+}
+/* col-md */
+@media screen and (min-width: 768px) {
+.justify-center-md {
+  justify-content: center;
+}
+
+.col-md-6 {
+  flex: 0 0 calc(100% * 6 / 12 - 0.5%);
+}
+}
+/* col-lg */
+@media screen and (min-width: 992px) {
+
+.justify-center-lg {
+  justify-content: center;
+}
+}
+
+@media screen and (min-width: 1200px) {
+
+.justify-center-xl {
+  justify-content: center;
+}
+}
