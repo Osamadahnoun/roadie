@@ -39,7 +39,7 @@ const Header = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto hoverPointer">
                 <Nav.Link as={Link} to="/allposts">
-                  Home
+                  <p>Home</p>
                 </Nav.Link>
                 {/* <NavDropdown
                   title="Action"
@@ -52,16 +52,16 @@ const Header = () => {
                 {Auth.loggedIn() ? (
                   <>
                     <Nav.Link className="text1 hoverPointer" as={Link} to="/profile">
-                      My Profile
+                      <p>My Profile</p>
                     </Nav.Link>
-                    <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                    <Nav.Link onClick={Auth.logout}><p>Logout</p></Nav.Link>
                   </>
                 ) : (
                   <Nav.Link className="hoverPointer" onClick={() => setShowModal(true)}>
                     <p>Login/Sign Up</p>
                   </Nav.Link>
                 )}
-                <Nav.Link className="hoverPointer" onClick={getCheckout}>Donate</Nav.Link>
+                <Nav.Link className="hoverPointer" onClick={getCheckout}><p>Donate</p></Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>
@@ -80,10 +80,10 @@ const Header = () => {
             <Modal.Title id="signup-modal">
               <Nav variant="pills">
                 <Nav.Item>
-                  <Nav.Link className="hoverPointer login" eventKey="login">Login</Nav.Link>
+                  <Nav.Link className="hoverPointer login" eventKey="login"><p>Login</p></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className="hoverPointer signup" eventKey="signup">Sign Up</Nav.Link>
+                  <Nav.Link className="hoverPointer signup" eventKey="signup"><p>Sign Up</p></Nav.Link>
                 </Nav.Item>
               </Nav>
             </Modal.Title>
