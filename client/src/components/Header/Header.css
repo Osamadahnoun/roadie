@@ -1,10 +1,20 @@
 .navBar {
   background-color: #83C5BE;
+  border-bottom: 5px;
+}
+
+.navBar p {
+  background-color: #83C5BE;
 }
 
 .title1 p {
   font-size: 3rem;
   margin: 3px;
+  background-color: #83C5BE;
+}
+
+.navDiv, .navDiv p {
+  background-color: #83C5BE;
 }
 
 .dropdown {

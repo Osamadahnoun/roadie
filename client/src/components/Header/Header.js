@@ -28,16 +28,16 @@ const Header = () => {
   return (
     <div className="w-100">
       <Navbar expand="lg" className="p-3 navBar">
-        <Container className="container">
-          <div>
+        <Container className="container navBar">
+          <div className="navBar">
             <Navbar.Brand className="title1">
               <p>Roadie</p>
             </Navbar.Brand>
           </div>
-          <div>
+          <div className='navDiv'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto hoverPointer">
+              <Nav className="me-auto hoverPointer navDiv">
                 <Nav.Link as={Link} to="/allposts">
                   <p>Home</p>
                 </Nav.Link>
