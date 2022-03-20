@@ -2,6 +2,8 @@ import React from "react";
 import "./Posts.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
+import DeletePostButton from "../DeletePostButton/DeletePostButton";
 
 const Posts = ({ posts }) => {
   return (
@@ -17,35 +19,41 @@ const Posts = ({ posts }) => {
                 <Link to={`/profile/${post.username}`}>{post.username}</Link>
                 {post.createdAt}
               </Card.Header>
-              <Link to={`/post/${post._id}`}>
-                <Card.Body>
-                  <Card.Title className="title">{post.location}</Card.Title>
-                  <Card.Text className="text">{post.postText}</Card.Text>
-                  <Card.Title className="border-top pt-2 title">
-                    Cost of Travel
-                  </Card.Title>
-                  <Card.Text className="text">{post.cost}</Card.Text>
-                  <Card.Title className="border-top pt-2 title">
-                    Heritages | Places to Visit | Accessibility
-                  </Card.Title>
-                  <Card.Text className="text">
-                    Heritages: {post.heritages}
-                  </Card.Text>
-                  <Card.Text className="text">
-                    Places to visit: {post.placesToVisit}
-                  </Card.Text>
-                  <Card.Text className="text">
-                    Accessibility: {post.accessibility}
-                  </Card.Text>
-                  <Card.Title className="border-top pt-2 title">
-                    Extra Information
-                  </Card.Title>
-                  <Card.Text className="text">{post.other}</Card.Text>
+              <Card.Body>
+                <Card.Title className="title">{post.location}</Card.Title>
+                <Card.Text className="text">{post.postText}</Card.Text>
+                <Card.Title className="border-top pt-2 title">
+                  Cost of Travel
+                </Card.Title>
+                <Card.Text className="text">{post.cost}</Card.Text>
+                <Card.Title className="border-top pt-2 title">
+                  Heritages | Places to Visit | Accessibility
+                </Card.Title>
+                <Card.Text className="text">
+                  Heritages: {post.heritages}
+                </Card.Text>
+                <Card.Text className="text">
+                  Places to visit: {post.placesToVisit}
+                </Card.Text>
+                <Card.Text className="text">
+                  Accessibility: {post.accessibility}
+                </Card.Text>
+                <Card.Title className="border-top pt-2 title">
+                  Extra Information
+                </Card.Title>
+                <Card.Text className="text">{post.other}</Card.Text>
+                <Link to={`/post/${post._id}`}>
                   <Card.Title className="border-top title pt-2 d-flex align-items-center">
                     Comments: {post.commentCount} | Click to view or comment!
                   </Card.Title>
-                </Card.Body>
-              </Link>
+                </Link>
+                {Auth.loggedIn() &&
+                  Auth.getProfile().data.username === post.username && (
+                    <Card.Title className="border-top title pt-2 d-flex align-items-center">
+                      <DeletePostButton posts={post} />
+                    </Card.Title>
+                  )}
+              </Card.Body>
             </Card>
           </div>
         ))}
