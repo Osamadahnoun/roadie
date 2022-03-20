@@ -38,7 +38,7 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto hoverPointer">
-                <Nav.Link className="text1" as={Link} to="/allposts">
+                <Nav.Link as={Link} to="/allposts">
                   Home
                 </Nav.Link>
                 {/* <NavDropdown
