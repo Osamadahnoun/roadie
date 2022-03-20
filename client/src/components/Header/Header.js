@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <div className="w-100">
-      <Navbar bg="light" expand="lg" className="p-3">
+      <Navbar expand="lg" className="p-3 navBar">
         <Container className="container">
           <div>
             <Navbar.Brand className="title1">
