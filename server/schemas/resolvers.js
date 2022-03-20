@@ -150,7 +150,7 @@ const resolvers = {
         deletePost: async (parent, { postId }, context) => {
             if(context.user) {
                 const postless = await Post.findOneAndDelete(
-                    { _id: postId }
+                    { _id: postId, username: context.user.username }
                 )
 
                 return postless;
@@ -161,7 +161,7 @@ const resolvers = {
         deleteComment: async (parent, { postId, commentId }, context) => {
             if(context.user) {
                 const commentlessPost = await Post.findOneAndUpdate(
-                    { _id: postId },
+                    { _id: postId, username: context.user.username },
                     { $pull: { comments: {_id: commentId }} },
                     { new: true }
                 ).populate('comments')
@@ -170,6 +170,19 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in to delete your comment!');
+        },
+        editPost: async (parent, args, context) => {
+            if (context.user) {
+                const updatedPost = await Post.findOneAndReplace(
+                    { _id: args.postId, username: context.user.username },
+                    { postText: args.postText, location: args.location, cost: args.cost, heritages: args.heritages, placesToVisit: args.placesToVisit, accessibility: args.accessibility, other: args.other, username: context.user.username},
+                    { new: true }
+                )
+
+                return updatedPost
+            }
+
+            throw new AuthenticationError('You need to be logged in to edit your post!');
         }
     }
 };

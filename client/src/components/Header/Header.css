@@ -1,3 +1,7 @@
+.navBar {
+  background-color: #83C5BE;
+}
+
 .title1 p {
   font-size: 3rem;
   margin: 3px;
@@ -19,6 +23,11 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+.modalHeader {
+  background-color: #83C5BE;
+}
+
 
 /* @media screen and (max-width: 980px) {
 }

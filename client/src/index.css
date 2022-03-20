@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #EDF6F9;
+  color: #006D77;
 }
 
 html {
@@ -35,7 +37,109 @@ code {
 
 .profile-title {
   font-size: 2.25rem;
-  background-color: whitesmoke;
   padding: 20px;
   border-radius: 10px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+}
+
+.card {
+  margin: 0 0 20px 0;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+}
+
+.card-header {
+  margin: 0;
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  text-align: center;
+  font-size: medium;
+  background-color: #83C5BE;
+}
+
+.hoverPointer {
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 2.5%;
+  font-size: 1.4rem;
+}
+
+.btn {
+  font-size: medium;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  transition: all 0.5s;
+  text-align: center;
+  background-color: #83C5BE;
+}
+
+.btn-inline {
+  display: inline;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: #EDF6F9;
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-four);
+}
+
+/* col-sm */
+@media screen and (min-width: 640px) {
+.justify-center-sm {
+  justify-content: center;
+}
+}
+/* col-md */
+@media screen and (min-width: 768px) {
+.justify-center-md {
+  justify-content: center;
+}
+
+.col-md-6 {
+  flex: 0 0 calc(100% * 6 / 12 - 0.5%);
+}
+}
+/* col-lg */
+@media screen and (min-width: 992px) {
+
+.justify-center-lg {
+  justify-content: center;
+}
+}
+
+@media screen and (min-width: 1200px) {
+
+.justify-center-xl {
+  justify-content: center;
+}
 }
