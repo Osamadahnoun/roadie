@@ -14,10 +14,10 @@ const Posts = ({ posts }) => {
           >
             <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <Card.Header className="d-flex justify-content-between header flex-wrap">
-                <Link to="/profile">{post.username}</Link>
+                <Link to={`/profile/${post.username}`}>{post.username}</Link>
                 {post.createdAt}
               </Card.Header>
-              <Link to="/post">
+              <Link to={`/post/${post._id}`}>
                 <Card.Body>
                   <Card.Title className="title">{post.location}</Card.Title>
                   <Card.Text className="text">{post.postText}</Card.Text>

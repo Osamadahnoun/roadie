@@ -113,3 +113,27 @@ export const DELETE_COMMENT = gql`
     }
   }
 `;
+
+export const EDIT_POST = gql`
+  mutation editPost($postId: ID!, $postText: String!, $location: String!, $cost: Int, $heritages: String, $placesToVisit: String, $accessibility: String, $other: String) {
+    editPost(postId: $postId, postText: $postText, location: $location, cost: $cost, heritages: $heritages, placesToVisit: $placesToVisit, accessibility: $accessibility, other: $other) {
+      _id
+      postText
+      createdAt
+      username
+      commentCount
+      location
+      cost
+      heritages
+      placesToVisit
+      accessibility
+      other
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+  }
+`;

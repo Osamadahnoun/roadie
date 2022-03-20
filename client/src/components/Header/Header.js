@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import {
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Modal,
-  Tab,
-} from "react-bootstrap";
-import AddPostModal from "../AddPostModal/AddPostModal";
+import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Signup from "../Authorization/Signup/Signup";
 import Login from "../Authorization/Login/Login";
 
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/client';
+import { QUERY_CHECKOUT } from "../../utils/queries";
+import { loadStripe } from "@stripe/stripe-js";
+import { useLazyQuery } from "@apollo/client";
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const [getCheckout, {data}] = useLazyQuery(QUERY_CHECKOUT);
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
     if (data) {
@@ -49,19 +41,19 @@ const Header = () => {
                 <Nav.Link className="text1" as={Link} to="/allposts">
                   Home
                 </Nav.Link>
-                <Nav.Link className="text1" as={Link} to="/profile">
-                  My Profile
-                </Nav.Link>
-                <NavDropdown
+                {/* <NavDropdown
                   title="Action"
                   id="basic-nav-dropdown"
                   className="dropdown"
                 >
                   <NavDropdown.Item className="text1"></NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
                 {/* if user is logged in show saved books and logout */}
                 {Auth.loggedIn() ? (
                   <>
+                    <Nav.Link className="text1" as={Link} to="/profile">
+                      My Profile
+                    </Nav.Link>
                     <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                   </>
                 ) : (
