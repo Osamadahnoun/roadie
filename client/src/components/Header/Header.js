@@ -51,7 +51,7 @@ const Header = () => {
                 {/* if user is logged in show saved books and logout */}
                 {Auth.loggedIn() ? (
                   <>
-                    <Nav.Link className="text1 hoverPointer" as={Link} to="/profile">
+                    <Nav.Link className="hoverPointer" as={Link} to="/profile">
                       <p>My Profile</p>
                     </Nav.Link>
                     <Nav.Link onClick={Auth.logout}><p>Logout</p></Nav.Link>

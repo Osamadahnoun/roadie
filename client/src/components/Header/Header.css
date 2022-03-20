@@ -22,11 +22,6 @@
   margin: 3px;
 }
 
-.text1 p {
-  font-size: 1.75rem;
-  margin: 3px;
-}
-
 .container {
   display: flex;
   justify-content: space-between;
