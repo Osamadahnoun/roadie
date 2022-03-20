@@ -35,6 +35,7 @@ const Profile = () => {
       <h1 className="profile-title m-5">
         Viewing {userParam ? `${user.username}'s` : "your"} profile
       </h1>
+
       <Posts posts={user.posts} title={`${user.username}'s Logs`} />
     </div>
   );

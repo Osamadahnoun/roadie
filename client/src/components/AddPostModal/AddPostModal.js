@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
-import { GET_ALL_POSTS } from "../../utils/queries";
+import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
 
 const AddPostModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -76,12 +76,26 @@ const AddPostModal = ({ children }) => {
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
-      const { posts } = cache.readQuery({ query: GET_ALL_POSTS });
+      try {
+        const { posts } = cache.readQuery({ query: GET_ALL_POSTS });
 
-      cache.writeQuery({
-        query: GET_ALL_POSTS,
-        data: { posts: [addPost, ...posts] },
-      });
+        cache.writeQuery({
+          query: GET_ALL_POSTS,
+          data: { posts: [addPost, ...posts] },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, posts: [...me.posts, addPost] } },
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
