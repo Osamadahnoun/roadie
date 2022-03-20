@@ -50,7 +50,6 @@ const Comment = ({ postId }) => {
         />
         {error && <span className="ml-2">Something went wrong...</span>}
         <Button
-          backgroundColor="whitesmoke"
           mt="2"
           width="100%"
           onClick={handleSubmit}

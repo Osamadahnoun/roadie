@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #FFDDD2;
 }
 
 html {
@@ -35,7 +36,6 @@ code {
 
 .profile-title {
   font-size: 2.25rem;
-  background-color: whitesmoke;
   padding: 20px;
   border-radius: 10px;
 }
@@ -67,11 +67,14 @@ code {
   margin: 0;
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  background-color: #EDF6F9;
+  text-align: center;
 }
 
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
+  background-color: #83C5BE;
 }
 
 .btn,
@@ -82,21 +85,18 @@ code {
   margin: 5px 0;
   border-radius: var(--border-radius);
   border: none;
-  color: var(--dark);
   outline: none;
-  background-color: var(--secondary);
   transition: all 0.5s;
 }
 
 .btn:hover,
 .pill:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+
 }
 
 .btn:hover a,
 .pill:hover a {
-  color: var(--secondary);
+
 }
 
 .btn-inline {
@@ -110,6 +110,7 @@ code {
   font-size: 1.2rem;
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
+  background-color: #EDF6F9;
 }
 
 .mb-4 {
