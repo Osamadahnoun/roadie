@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #FFDDD2;
+  background-color: #EDF6F9;
 }
 
 html {
@@ -67,14 +67,18 @@ code {
   margin: 0;
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-  background-color: #EDF6F9;
   text-align: center;
+  font-size: medium;
+  background-color: #83C5BE;
+}
+
+.hoverPointer {
+  cursor: pointer;
 }
 
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
-  background-color: #83C5BE;
 }
 
 .btn {
@@ -87,7 +91,7 @@ code {
   outline: none;
   transition: all 0.5s;
   text-align: center;
-  background-color: #006D77;
+  background-color: #83C5BE;
 }
 
 .btn-inline {

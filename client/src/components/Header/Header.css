@@ -20,6 +20,11 @@
   flex-wrap: wrap;
 }
 
+.modalHeader {
+  background-color: #83C5BE;
+}
+
+
 /* @media screen and (max-width: 980px) {
 }
 
