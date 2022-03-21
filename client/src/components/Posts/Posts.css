@@ -9,3 +9,7 @@
 .text p {
   font-size: 1.25rem;
 }
+
+.cardHeader {
+  background-color: #83C5BE;
+}

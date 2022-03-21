@@ -7,6 +7,8 @@ import { GET_SINGLE_POST } from "../../utils/queries";
 import CommentList from "../../components/CommentList/CommentList";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import './SinglePost.css';
+
 const SinglePost = () => {
   const { id: postId } = useParams();
 
@@ -24,12 +26,14 @@ const SinglePost = () => {
     <div className="d-flex flex-column align-items-center w-100">
       <div className="container d-flex justify-content-center m-5">
         <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div className="cardHeader">
           <Card.Header className="d-flex justify-content-between header flex-wrap">
             <Link to={`/profile/${post.username}`}>
-              <p className="p-3">{post.username}</p>
+              <p className="p-3 cardHeader">{post.username}</p>
             </Link>{" "}
-            <p className="p-3">{post.createdAt}</p>
+            <p className="p-3 cardHeader">{post.createdAt}</p>
           </Card.Header>
+          </div>
           <Card.Body>
             <Card.Title className="title">
               <p>{post.location}</p>

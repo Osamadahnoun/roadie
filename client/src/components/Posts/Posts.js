@@ -13,10 +13,12 @@ const Posts = ({ posts }) => {
             key={post._id}
           >
             <Card className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div className="cardHeader">
               <Card.Header className="d-flex justify-content-between header flex-wrap">
                 <Link to={`/profile/${post.username}`}>{post.username}</Link>
                 {post.createdAt}
               </Card.Header>
+              </div>
               <Link to={`/post/${post._id}`}>
                 <Card.Body>
                   <Card.Title className="title">{post.location}</Card.Title>

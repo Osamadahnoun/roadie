@@ -3,6 +3,7 @@ import Posts from "../../components/Posts/Posts";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_POSTS } from "../../utils/queries";
 import AddPostModal from "../../components/AddPostModal/AddPostModal";
+import './AllPosts.css';
 
 const Allposts = () => {
   const { loading, data } = useQuery(GET_ALL_POSTS);
