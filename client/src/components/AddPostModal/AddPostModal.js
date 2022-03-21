@@ -124,8 +124,8 @@ const AddPostModal = ({ children }) => {
   return (
     <>
       <span onClick={onOpen}>{children}</span>
-
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl" className="modalHeader">
+      <div className="modalHeader">
+      <Modal isOpen={isOpen} onClose={onClose} size="6xl">
         <ModalOverlay className="modalHeader" />
         <ModalContent d="flex" className="modalHeader">
           <ModalHeader fontSize="2rem" alignSelf="center" className="modalHeader">
@@ -231,6 +231,7 @@ const AddPostModal = ({ children }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+      </div>
     </>
   );
 };
