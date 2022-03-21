@@ -9,7 +9,6 @@ const Allposts = () => {
   const { loading, data } = useQuery(GET_ALL_POSTS);
 
   const posts = data?.posts || [];
-  console.log(posts);
   return (
     <div className="container d-flex flex-column justify-content-center">
       <h2 className="m-5 home-title">Travel Logs</h2>
