@@ -25,14 +25,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postText: String!, $location: String!, $cost: Int, $heritages: String, $placesToVisit: String, $accessibility: String, $other: String) {
-    addPost(postText: $postText, location: $location, cost: $cost, heritages: $heritages, placesToVisit: $placesToVisit, accessibility: $accessibility, other: $other) {
+  mutation addPost($postText: String!, $location: String!, $locationImage: String, $cost: Int, $heritages: String, $placesToVisit: String, $accessibility: String, $other: String) {
+    addPost(postText: $postText, location: $location, locationImage: $locationImage, cost: $cost, heritages: $heritages, placesToVisit: $placesToVisit, accessibility: $accessibility, other: $other) {
       _id
       postText
       createdAt
       username
       commentCount
       location
+      locationImage
       cost
       heritages
       placesToVisit
@@ -123,6 +124,7 @@ export const EDIT_POST = gql`
       username
       commentCount
       location
+      locationImage
       cost
       heritages
       placesToVisit

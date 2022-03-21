@@ -15,6 +15,7 @@ export const QUERY_USER = gql`
         _id
         postText
         location
+        locationImage
         cost
         heritages
         placesToVisit
@@ -39,6 +40,7 @@ export const QUERY_ME = gql`
         _id
         postText
         location
+        locationImage
         cost
         heritages
         placesToVisit
@@ -72,6 +74,7 @@ export const GET_ALL_USERS = gql`
         _id
         postText
         location
+        locationImage
         cost
         placesToVisit
         heritages
@@ -107,6 +110,7 @@ export const GET_SINGLE_USER = gql`
         _id
         postText
         location
+        locationImage
         cost
         placesToVisit
         heritages
@@ -138,6 +142,7 @@ export const GET_ALL_POSTS = gql`
       _id
       postText
       location
+      locationImage
       cost
       heritages
       placesToVisit
@@ -162,6 +167,7 @@ export const GET_SINGLE_POST = gql`
       _id
       postText
       location
+      locationImage
       cost
       heritages
       placesToVisit
