@@ -142,7 +142,7 @@ const resolvers = {
             if (context.user) {
                 const updatedPost = await Post.findOneAndReplace(
                     { _id: args.postId, username: context.user.username },
-                    { postText: args.postText, location: args.location, cost: args.cost, heritages: args.heritages, placesToVisit: args.placesToVisit, accessibility: args.accessibility, other: args.other, username: context.user.username},
+                    { postText: args.postText, location: args.location, locationImage: args.locationImage, cost: args.cost, heritages: args.heritages, placesToVisit: args.placesToVisit, accessibility: args.accessibility, other: args.other, username: context.user.username},
                     { new: true }
                 )
 

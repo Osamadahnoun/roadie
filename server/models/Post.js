@@ -16,6 +16,10 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 100
     },
+    locationImage: {
+      type: String
+
+    },
     // image of location?
     cost: {
       // find a way to have user select number of dollar signs instead of inputting a number?
