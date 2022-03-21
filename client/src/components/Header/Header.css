@@ -34,6 +34,11 @@
   background-color: #83C5BE;
 }
 
+.modalTitle, .modalTitle p {
+  background-color: transparent;
+}
+
+
 
 /* @media screen and (max-width: 980px) {
 }
