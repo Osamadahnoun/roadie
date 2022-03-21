@@ -3,11 +3,10 @@
   position: sticky;
   top: 100%;
   padding: 30px 25px;
-  text-align: center;
   background-color: #83C5BE;
 }
 .footer p {
-  font-size: 2rem;
+  font-size: large;
   margin: 10px;
   background-color: #83C5BE;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AddPostModal.css";
 import {
   Modal,
   ModalOverlay,
@@ -124,19 +125,20 @@ const AddPostModal = ({ children }) => {
     <>
       <span onClick={onOpen}>{children}</span>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl">
-        <ModalOverlay />
-        <ModalContent d="flex">
-          <ModalHeader fontSize="2rem" alignSelf="center">
+      <Modal isOpen={isOpen} onClose={onClose} size="6xl" className="modalHeader">
+        <ModalOverlay className="modalHeader" />
+        <ModalContent d="flex" className="modalHeader">
+          <ModalHeader fontSize="2rem" alignSelf="center" className="modalHeader">
             Add Travel Log
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <FormControl>
-              <FormLabel htmlFor="location" fontSize="2rem" mt={5}>
+          <ModalBody className="modalHeader">
+            <FormControl className="modalHeader">
+              <FormLabel htmlFor="location" fontSize="2rem" mt={5} className="modalHeader">
                 Location Visited
               </FormLabel>
               <Input
+                className="input"
                 name="location"
                 id="locationCount"
                 type="text"
@@ -145,30 +147,33 @@ const AddPostModal = ({ children }) => {
                 value={location}
               />
               Character Count: {locationCount}/100
-              <FormLabel htmlFor="cost" fontSize="2rem" mt={5}>
+              <FormLabel htmlFor="cost" fontSize="2rem" mt={5} className="modalHeader">
                 Cost of Travel (USD)
               </FormLabel>
               <Input
+                className="input"
                 name="cost"
                 type="number"
                 placeholder="Cost of Travel"
                 onChange={handleChange}
                 value={cost}
               />
-              <FormLabel htmlFor="post" fontSize="2rem" mt={5}>
+              <FormLabel htmlFor="post" fontSize="2rem" mt={5} className="modalHeader">
                 We want to hear all about your trip!
               </FormLabel>
               <Textarea
+                className="input"
                 placeholder="Tell us about your trip!"
                 name="post"
                 onChange={handleChangeMain}
                 value={mainPost}
               />
               Character Count: {mainCharacterCount}/280
-              <FormLabel fontSize="2rem" mt={5}>
+              <FormLabel fontSize="2rem" mt={5} className="modalHeader">
                 The information below isn't required
               </FormLabel>
               <Textarea
+                className="input"
                 name="heritage"
                 id="heritageCount"
                 type="text"
@@ -179,6 +184,7 @@ const AddPostModal = ({ children }) => {
               />
               Character Count: {heritageCount}/100
               <Textarea
+                className="input"
                 name="places"
                 id="placesCount"
                 type="text"
@@ -189,6 +195,7 @@ const AddPostModal = ({ children }) => {
               />
               Character Count: {placesCount}/100
               <Textarea
+                className="input"
                 name="accessibility"
                 id="accessibilityCount"
                 type="text"
@@ -199,6 +206,7 @@ const AddPostModal = ({ children }) => {
               />
               Character Count: {accessibilityCount}/100
               <Textarea
+                className="input"
                 name="extra"
                 id="extraCount"
                 type="text"
@@ -213,12 +221,12 @@ const AddPostModal = ({ children }) => {
             </FormControl>
           </ModalBody>
 
-          <ModalFooter>
+          <ModalFooter className="modalHeader">
+          <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
+              Share Log!
+            </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
-            </Button>
-            <Button variant="ghost" onClick={handleSubmit}>
-              Share Log!
             </Button>
           </ModalFooter>
         </ModalContent>
