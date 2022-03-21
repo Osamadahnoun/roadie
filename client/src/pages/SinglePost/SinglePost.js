@@ -29,9 +29,9 @@ const SinglePost = () => {
           <div className="cardHeader">
           <Card.Header className="d-flex justify-content-between header flex-wrap">
             <Link to={`/profile/${post.username}`}>
-              <p className="p-3 cardHeader">{post.username}</p>
+              <p className="p-3">{post.username}</p>
             </Link>{" "}
-            <p className="p-3 cardHeader">{post.createdAt}</p>
+            <p className="p-3">{post.createdAt}</p>
           </Card.Header>
           </div>
           <Card.Body>

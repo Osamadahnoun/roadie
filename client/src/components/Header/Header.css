@@ -30,6 +30,11 @@
   flex-wrap: wrap;
 }
 
+.navbar-toggler-icon {
+  background-color: #83C5BE;
+}
+
+
 .modalHeader {
   background-color: #83C5BE;
 }

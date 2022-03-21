@@ -1,3 +1,7 @@
 .input {
     background-color: #FFDDD2;
 }
+
+h4.card-header, .btn.d-block.w-100 {
+    background-color: #83C5BE;
+}
