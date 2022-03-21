@@ -7,29 +7,39 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
   useDisclosure,
-  Input,
   FormControl,
   FormLabel,
   Textarea,
+  Input,
+  Button,
   useToast,
 } from "@chakra-ui/react";
+import { EDIT_POST } from "../../utils/mutations";
+// import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
 import { useMutation } from "@apollo/client";
-import { ADD_POST } from "../../utils/mutations";
-import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
 
-const AddPostModal = ({ children }) => {
+const EditPostModal = ({ children, posts }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
+  const {
+    location,
+    cost,
+    postText,
+    heritages,
+    placesToVisit,
+    accessibility,
+    other,
+  } = posts;
+
   const [formState, setFormState] = useState({
-    location: "",
-    cost: 0,
-    heritage: "",
-    places: "",
-    accessibility: "",
-    extra: "",
+    locationInitial: location,
+    costInitial: cost,
+    heritageInitial: heritages,
+    placesInitial: placesToVisit,
+    accessibilityInitial: accessibility,
+    extraInitial: other,
   });
 
   const [characterCount, setCharacterCount] = useState({
@@ -41,17 +51,24 @@ const AddPostModal = ({ children }) => {
   });
 
   const {
-    locationCount,
-    heritageCount,
-    placesCount,
-    accessibilityCount,
-    extraCount,
+    locationCountInitial,
+    heritageCountInitial,
+    placesCountInitial,
+    accessibilityCountInitial,
+    extraCountInitial,
   } = characterCount;
 
-  const [mainPost, setMainPost] = useState("");
+  const [mainPost, setMainPost] = useState(postText);
   const [mainCharacterCount, setMainCharacterCount] = useState(0);
 
-  const { location, cost, heritage, places, accessibility, extra } = formState;
+  const {
+    locationInitial,
+    costInitial,
+    heritageInitial,
+    placesInitial,
+    accessibilityInitial,
+    extraInitial,
+  } = formState;
 
   const handleChange = (event) => {
     if (event.target.value.length <= 100) {
@@ -66,70 +83,48 @@ const AddPostModal = ({ children }) => {
     }
   };
 
-  const handleChangeMain = (event) => {
-    if (event.target.value.length <= 280) {
-      setMainPost(event.target.value);
-      setMainCharacterCount(event.target.value.length);
-    }
-  };
-
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: GET_ALL_POSTS });
-
-        cache.writeQuery({
-          query: GET_ALL_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (error) {
-        console.log(error);
-      }
-
-      try {
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, posts: [...me.posts, addPost] } },
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
+  const [editPost, { error }] = useMutation(EDIT_POST);
 
   const handleSubmit = async () => {
     try {
-      await addPost({
+      await editPost({
         variables: {
+          postId: posts._id,
           postText: mainPost,
-          location: location,
-          cost: parseInt(cost),
-          heritages: heritage,
-          placesToVisit: places,
-          accessibility: accessibility,
-          other: extra,
+          location: locationInitial,
+          cost: parseInt(costInitial),
+          heritages: heritageInitial,
+          placesToVisit: placesInitial,
+          accessibility: accessibilityInitial,
+          other: extraInitial,
         },
       });
       setFormState({
-        location: "",
-        cost: "",
-        heritage: "",
-        places: "",
-        accessibility: "",
-        extra: "",
+        locationInitial: "",
+        costInitial: "",
+        heritageInitial: "",
+        placesInitial: "",
+        accessibilityInitial: "",
+        extraInitial: "",
       });
       setMainPost("");
       onClose();
       toast({
-        title: "Log Created!",
+        title: "Log Edited!",
         status: "success",
         duration: 5000,
         isClosable: true,
         position: "top",
       });
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleChangeMain = (event) => {
+    if (event.target.value.length <= 280) {
+      setMainPost(event.target.value);
+      setMainCharacterCount(event.target.value.length);
     }
   };
 
@@ -141,7 +136,7 @@ const AddPostModal = ({ children }) => {
         <ModalOverlay />
         <ModalContent d="flex">
           <ModalHeader fontSize="2rem" alignSelf="center">
-            Add Travel Log
+            Edit Travel Log
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -150,30 +145,30 @@ const AddPostModal = ({ children }) => {
                 Location Visited
               </FormLabel>
               <Input
-                name="location"
-                id="locationCount"
+                name="locationInitial"
+                id="locationCountInitial"
                 type="text"
                 placeholder="Enter location"
                 onChange={handleChange}
-                value={location}
+                value={locationInitial}
               />
-              Character Count: {locationCount}/100
+              Character Count: {locationCountInitial}/100
               <FormLabel htmlFor="cost" fontSize="2rem" mt={5}>
                 Cost of Travel (USD)
               </FormLabel>
               <Input
-                name="cost"
+                name="costInitial"
                 type="number"
                 placeholder="Cost of Travel"
                 onChange={handleChange}
-                value={cost}
+                value={costInitial}
               />
               <FormLabel htmlFor="post" fontSize="2rem" mt={5}>
                 We want to hear all about your trip!
               </FormLabel>
               <Textarea
                 placeholder="Tell us about your trip!"
-                name="post"
+                name="mainPost"
                 onChange={handleChangeMain}
                 value={mainPost}
               />
@@ -182,45 +177,45 @@ const AddPostModal = ({ children }) => {
                 The information below isn't required
               </FormLabel>
               <Textarea
-                name="heritage"
-                id="heritageCount"
+                name="heritageInitial"
+                id="heritageCountInitial"
                 type="text"
                 placeholder="Heritages"
                 mt={5}
                 onChange={handleChange}
-                value={heritage}
+                value={heritageInitial}
               />
-              Character Count: {heritageCount}/100
+              Character Count: {heritageCountInitial}/100
               <Textarea
-                name="places"
-                id="placesCount"
+                name="placesInitial"
+                id="placesCountInitial"
                 type="text"
                 placeholder="Places to Visit"
                 mt={5}
                 onChange={handleChange}
-                value={places}
+                value={placesInitial}
               />
-              Character Count: {placesCount}/100
+              Character Count: {placesCountInitial}/100
               <Textarea
-                name="accessibility"
-                id="accessibilityCount"
+                name="accessibilityInitial"
+                id="accessibilityCountInitial"
                 type="text"
                 placeholder="Accessibility"
                 mt={5}
                 onChange={handleChange}
-                value={accessibility}
+                value={accessibilityInitial}
               />
-              Character Count: {accessibilityCount}/100
+              Character Count: {accessibilityCountInitial}/100
               <Textarea
-                name="extra"
-                id="extraCount"
+                name="extraInitial"
+                id="extraCountInitial"
                 type="text"
                 placeholder="Feel free to add any additional info here!"
                 mt={5}
                 onChange={handleChange}
-                value={extra}
+                value={extraInitial}
               />
-              Character Count: {extraCount}/100
+              Character Count: {extraCountInitial}/100
               <br></br>
               {error && <span className="ml-2">Something went wrong...</span>}
             </FormControl>
@@ -231,7 +226,7 @@ const AddPostModal = ({ children }) => {
               Close
             </Button>
             <Button variant="ghost" onClick={handleSubmit}>
-              Share Log!
+              Update Log!
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -240,4 +235,4 @@ const AddPostModal = ({ children }) => {
   );
 };
 
-export default AddPostModal;
+export default EditPostModal;
