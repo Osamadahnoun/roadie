@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import DeletePostButton from "../DeletePostButton/DeletePostButton";
+import EditPostBtn from "../EditPostButton/EditPostBtn";
 
 const Posts = ({ posts }) => {
   return (
@@ -51,6 +52,12 @@ const Posts = ({ posts }) => {
                   Auth.getProfile().data.username === post.username && (
                     <Card.Title className="border-top title pt-2 d-flex align-items-center">
                       <DeletePostButton posts={post} />
+                    </Card.Title>
+                  )}
+                {Auth.loggedIn() &&
+                  Auth.getProfile().data.username === post.username && (
+                    <Card.Title className="border-top title pt-2 d-flex align-items-center">
+                      <EditPostBtn posts={post} />
                     </Card.Title>
                   )}
               </Card.Body>

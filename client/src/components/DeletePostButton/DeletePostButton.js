@@ -60,7 +60,7 @@ const DeletePostButton = ({ posts }) => {
         className="bg-danger rounded p-3 text-white"
         onClick={handleDelete}
       >
-        {posts._id}
+        Delete Log
       </button>
     </div>
   );
