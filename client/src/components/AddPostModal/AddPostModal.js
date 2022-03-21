@@ -125,8 +125,8 @@ const AddPostModal = ({ children }) => {
     <>
     
       <span onClick={onOpen} className="hoverPointer">{children}</span>
-      
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl">
+   
+      <Modal isOpen={isOpen} onClose={onClose} size="6xl" className="modal">
         <ModalOverlay className="modalHeader" />
         <ModalContent d="flex" className="modalHeader">
           <ModalHeader fontSize="2rem" alignSelf="center" className="modalHeader">

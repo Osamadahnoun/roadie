@@ -1,7 +1,7 @@
-.modalHeader {
-    background-color: #83C5BE;
+.chakra-modal__content.modalHeader.css-1rwdsrk {
+    background: #83C5BE !important; 
 }
 
-.input {
+.modalHeader .input {
     background-color: #FFDDD2;
 }
