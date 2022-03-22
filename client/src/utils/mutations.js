@@ -82,9 +82,24 @@ export const ADD_COMMENT = gql`
   }
 `;
 
+// export const ADD_FRIEND = gql`
+//   mutation addFriend($friendId: ID!) {
+//     addFriend(friendId: $friendId) {
+//       _id
+//       username
+//       friendCount
+//       friends {
+//         _id
+//         username
+//       }
+//       email
+//     }
+//   }
+// `;
+
 export const ADD_FRIEND = gql`
-  mutation addFriend($friendId: ID!) {
-    addFriend(friendId: $friendId) {
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
       _id
       username
       friendCount
@@ -92,7 +107,6 @@ export const ADD_FRIEND = gql`
         _id
         username
       }
-      email
     }
   }
 `;
