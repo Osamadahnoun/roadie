@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
   color: #006D77;
 }
 
@@ -80,7 +79,6 @@ code {
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
-  border: 1px solid #000000a
 }
 
 .btn {
