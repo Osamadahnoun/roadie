@@ -51,6 +51,7 @@ const AddPostModal = ({ children }) => {
 
   const [mainPost, setMainPost] = useState("");
   const [mainCharacterCount, setMainCharacterCount] = useState(0);
+  const [imageState, setImageState] = useState("");
 
   const { location, cost, heritage, places, accessibility, extra } = formState;
 
@@ -72,6 +73,10 @@ const AddPostModal = ({ children }) => {
       setMainPost(event.target.value);
       setMainCharacterCount(event.target.value.length);
     }
+  };
+
+  const handleChangeImage = (event) => {
+    setImageState(event.target.value);
   };
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -105,6 +110,7 @@ const AddPostModal = ({ children }) => {
         variables: {
           postText: mainPost,
           location: location,
+          locationImage: imageState,
           cost: parseInt(cost),
           heritages: heritage,
           placesToVisit: places,
@@ -121,6 +127,7 @@ const AddPostModal = ({ children }) => {
         extra: "",
       });
       setMainPost("");
+      setImageState("");
       onClose();
       toast({
         title: "Log Created!",
@@ -250,6 +257,22 @@ const AddPostModal = ({ children }) => {
                 value={extra}
               />
               Character Count: {extraCount}/100
+              <FormLabel
+                htmlFor="image"
+                fontSize="2rem"
+                mt={5}
+                className="modalHeader"
+              >
+                Image
+              </FormLabel>
+              <Input
+                className="input"
+                name="imageState"
+                type="text"
+                placeholder="Paste Image Address"
+                onChange={handleChangeImage}
+                value={imageState}
+              />
               <br></br>
               {error && <span className="ml-2">Something went wrong...</span>}
             </FormControl>

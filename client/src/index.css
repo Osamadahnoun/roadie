@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #EDF6F9;
-  color: #006D77;
+  background-color: #edf6f9;
+  color: #006d77;
 }
 
 html {
@@ -70,7 +70,7 @@ code {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   text-align: center;
   font-size: medium;
-  background-color: #83C5BE;
+  background-color: #83c5be;
 }
 
 .hoverPointer {
@@ -105,7 +105,7 @@ code {
   font-size: 1.2rem;
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
-  background-color: #EDF6F9;
+  background-color: #edf6f9;
 }
 
 .mb-4 {
@@ -114,31 +114,29 @@ code {
 
 /* col-sm */
 @media screen and (min-width: 640px) {
-.justify-center-sm {
-  justify-content: center;
-}
+  .justify-center-sm {
+    justify-content: center;
+  }
 }
 /* col-md */
 @media screen and (min-width: 768px) {
-.justify-center-md {
-  justify-content: center;
-}
+  .justify-center-md {
+    justify-content: center;
+  }
 
-.col-md-6 {
-  flex: 0 0 calc(100% * 6 / 12 - 0.5%);
-}
+  .col-md-6 {
+    flex: 0 0 calc(100% * 6 / 12 - 0.5%);
+  }
 }
 /* col-lg */
 @media screen and (min-width: 992px) {
-
-.justify-center-lg {
-  justify-content: center;
-}
+  .justify-center-lg {
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-
-.justify-center-xl {
-  justify-content: center;
-}
+  .justify-center-xl {
+    justify-content: center;
+  }
 }

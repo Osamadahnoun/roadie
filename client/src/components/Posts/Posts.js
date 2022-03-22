@@ -23,7 +23,10 @@ const Posts = ({ posts }) => {
                 </Card.Header>
               </div>
               <Card.Body>
-                <Card.Title className="title">{post.location}</Card.Title>
+                <Card.Img variant="top" src={post.locationImage} />
+                <Card.Title className="title pt-2 border-top mt-2">
+                  {post.location}
+                </Card.Title>
                 <Card.Text className="text">{post.postText}</Card.Text>
                 <Card.Title className="border-top pt-2 title">
                   Cost of Travel

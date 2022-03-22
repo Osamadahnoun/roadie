@@ -31,6 +31,7 @@ const EditPostModal = ({ children, posts }) => {
     placesToVisit,
     accessibility,
     other,
+    locationImage,
   } = posts;
 
   const [formState, setFormState] = useState({
@@ -60,6 +61,7 @@ const EditPostModal = ({ children, posts }) => {
 
   const [mainPost, setMainPost] = useState(postText);
   const [mainCharacterCount, setMainCharacterCount] = useState(0);
+  const [imageState, setImageState] = useState(locationImage);
 
   const {
     locationInitial,
@@ -83,6 +85,17 @@ const EditPostModal = ({ children, posts }) => {
     }
   };
 
+  const handleChangeMain = (event) => {
+    if (event.target.value.length <= 280) {
+      setMainPost(event.target.value);
+      setMainCharacterCount(event.target.value.length);
+    }
+  };
+
+  const handleChangeImage = (event) => {
+    setImageState(event.target.value);
+  };
+
   const [editPost, { error }] = useMutation(EDIT_POST);
 
   const handleSubmit = async () => {
@@ -92,6 +105,7 @@ const EditPostModal = ({ children, posts }) => {
           postId: posts._id,
           postText: mainPost,
           location: locationInitial,
+          locationImage: imageState,
           cost: parseInt(costInitial),
           heritages: heritageInitial,
           placesToVisit: placesInitial,
@@ -107,6 +121,7 @@ const EditPostModal = ({ children, posts }) => {
         accessibilityInitial: "",
         extraInitial: "",
       });
+      setImageState("");
       setMainPost("");
       onClose();
       toast({
@@ -118,13 +133,6 @@ const EditPostModal = ({ children, posts }) => {
       });
     } catch (e) {
       console.error(e);
-    }
-  };
-
-  const handleChangeMain = (event) => {
-    if (event.target.value.length <= 280) {
-      setMainPost(event.target.value);
-      setMainCharacterCount(event.target.value.length);
     }
   };
 
@@ -216,6 +224,22 @@ const EditPostModal = ({ children, posts }) => {
                 value={extraInitial}
               />
               Character Count: {extraCountInitial}/100
+              <FormLabel
+                htmlFor="image"
+                fontSize="2rem"
+                mt={5}
+                className="modalHeader"
+              >
+                Image
+              </FormLabel>
+              <Input
+                className="input"
+                name="imageState"
+                type="text"
+                placeholder="Paste Image Address"
+                onChange={handleChangeImage}
+                value={imageState}
+              />
               <br></br>
               {error && <span className="ml-2">Something went wrong...</span>}
             </FormControl>
