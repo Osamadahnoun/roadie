@@ -13,7 +13,7 @@ Posts must include the trip location, the estimated cost of the trip, and a summ
 
 Logged in users also have the option of commenting on posts to share their response. The user can edit or delete any of their own posts or comments.
 
-A user may also add other users to their friendslist, and this friends list appears on their profile page along with their own posts. The names included in the friends list act as links that direct you to that user's profile page.
+A user may also add other users to their friends list, and this friends list appears on their profile page along with their own posts. The names included in the friends list act as links that direct you to that user's profile page.
 
 ## Built With
 * Bootstrap
