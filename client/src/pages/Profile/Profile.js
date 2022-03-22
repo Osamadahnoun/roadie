@@ -73,7 +73,7 @@ const Profile = () => {
         friends={user.friends}
         user={user}
       >
-        <span className="profile-title m-3">Click to view friends list</span>
+        <span className="profile-title m-3"><button className="btn friends">Click to view friends list</button></span>
       </FriendsListModal>
 
       <Posts posts={user.posts} title={`${user.username}'s Logs`} />

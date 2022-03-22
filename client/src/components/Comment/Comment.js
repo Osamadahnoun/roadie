@@ -56,6 +56,7 @@ const Comment = ({ postId }) => {
           width="100%"
           onClick={handleSubmit}
           fontSize="1.25rem"
+          marginBottom={5}
         >
           Submit Comment
         </Button>

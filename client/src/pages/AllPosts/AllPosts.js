@@ -13,7 +13,7 @@ const Allposts = () => {
     <div className="container d-flex flex-column justify-content-center">
       <h2 className="m-5 home-title">Travel Logs</h2>
       <AddPostModal>
-        <p>Add a Post</p>
+        <button className="btn d-block w-100">Add a Post</button>
       </AddPostModal>
       {loading ? <div>Loading...</div> : <Posts posts={posts} />}
     </div>

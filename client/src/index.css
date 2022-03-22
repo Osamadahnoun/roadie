@@ -118,6 +118,11 @@ code {
   border-top-right-radius: 0px !important;
 }
 
+.btn.d-block.rounded.p-3.text-white.edit {
+  background-color: #E29578;
+  width: 100px;
+}
+
 .modalTitle .nav-tabs {
   border-bottom: unset !important;
 }

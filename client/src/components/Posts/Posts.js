@@ -56,13 +56,8 @@ const Posts = ({ posts }) => {
                 {Auth.loggedIn() &&
                   Auth.getProfile().data.username === post.username && (
                     <Card.Title className="border-top title pt-2 d-flex align-items-center">
-                      <DeletePostButton posts={post} />
-                    </Card.Title>
-                  )}
-                {Auth.loggedIn() &&
-                  Auth.getProfile().data.username === post.username && (
-                    <Card.Title className="border-top title pt-2 d-flex align-items-center">
-                      <EditPostBtn posts={post} />
+                      <div className="editingButton1"><EditPostBtn posts={post} /></div>
+                      <div className="editingButton1"><DeletePostButton posts={post} /></div>
                     </Card.Title>
                   )}
               </Card.Body>

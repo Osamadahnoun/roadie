@@ -19,6 +19,7 @@ import {
 import { EDIT_POST } from "../../utils/mutations";
 // import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
 import { useMutation } from "@apollo/client";
+import './EditPostModal.css'
 
 const EditPostModal = ({ children, posts }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -142,8 +143,8 @@ const EditPostModal = ({ children, posts }) => {
       <span onClick={onOpen}>{children}</span>
 
       <Modal isOpen={isOpen} onClose={onClose} size="6xl">
-        <ModalOverlay />
-        <ModalContent d="flex">
+        <ModalOverlay className="modalHeader" />
+        <ModalContent className="modalHeader" d="flex">
           <ModalHeader fontSize="2rem" alignSelf="center">
             Edit Travel Log
           </ModalHeader>
@@ -154,6 +155,7 @@ const EditPostModal = ({ children, posts }) => {
                 Location Visited
               </FormLabel>
               <Input
+                className="input"
                 name="locationInitial"
                 id="locationCountInitial"
                 type="text"
@@ -166,6 +168,7 @@ const EditPostModal = ({ children, posts }) => {
                 Cost of Travel (USD)
               </FormLabel>
               <Input
+                className="input"
                 name="costInitial"
                 type="number"
                 placeholder="Cost of Travel"
@@ -176,6 +179,7 @@ const EditPostModal = ({ children, posts }) => {
                 We want to hear all about your trip!
               </FormLabel>
               <Textarea
+                className="input"
                 placeholder="Tell us about your trip!"
                 name="mainPost"
                 onChange={handleChangeMain}
@@ -186,6 +190,7 @@ const EditPostModal = ({ children, posts }) => {
                 The information below isn't required
               </FormLabel>
               <Textarea
+                className="input"
                 name="heritageInitial"
                 id="heritageCountInitial"
                 type="text"
@@ -196,6 +201,7 @@ const EditPostModal = ({ children, posts }) => {
               />
               Character Count: {heritageCountInitial}/100
               <Textarea
+                className="input"
                 name="placesInitial"
                 id="placesCountInitial"
                 type="text"
@@ -206,6 +212,7 @@ const EditPostModal = ({ children, posts }) => {
               />
               Character Count: {placesCountInitial}/100
               <Textarea
+                className="input"
                 name="accessibilityInitial"
                 id="accessibilityCountInitial"
                 type="text"
@@ -216,6 +223,7 @@ const EditPostModal = ({ children, posts }) => {
               />
               Character Count: {accessibilityCountInitial}/100
               <Textarea
+                className="input"
                 name="extraInitial"
                 id="extraCountInitial"
                 type="text"
@@ -254,11 +262,11 @@ const EditPostModal = ({ children, posts }) => {
           </ModalBody>
 
           <ModalFooter>
+           <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
+              Update Log!
+            </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
-            </Button>
-            <Button variant="ghost" onClick={handleSubmit}>
-              Update Log!
             </Button>
           </ModalFooter>
         </ModalContent>
