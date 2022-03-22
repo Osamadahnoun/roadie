@@ -14,6 +14,7 @@ import {
   Input,
   Button,
   useToast,
+  Tooltip,
 } from "@chakra-ui/react";
 import { EDIT_POST } from "../../utils/mutations";
 // import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
@@ -232,6 +233,13 @@ const EditPostModal = ({ children, posts }) => {
               >
                 Image
               </FormLabel>
+              <Tooltip
+                aria-label="upload image instructions"
+                label="1. Go to https://images.google.com/. | 2. Search for the location you travelled to | 3. Find your favorite image | 4. Right click on image and copy image address | 5. Paste copied address into input area below"
+                marginBottom={3}
+              >
+                Upload image instructions (hover mouse here)
+              </Tooltip>
               <Input
                 className="input"
                 name="imageState"
