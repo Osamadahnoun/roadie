@@ -15,6 +15,7 @@ import {
   FormLabel,
   Textarea,
   useToast,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
@@ -265,6 +266,13 @@ const AddPostModal = ({ children }) => {
               >
                 Image
               </FormLabel>
+              <Tooltip
+                aria-label="upload image instructions"
+                label="1. Go to https://images.google.com/. | 2. Search for the location you travelled to | 3. Find your favorite image | 4. Right click on image and copy image address | 5. Paste copied address into input area below"
+                marginBottom={3}
+              >
+                Upload image instructions (hover mouse here)
+              </Tooltip>
               <Input
                 className="input"
                 name="imageState"
