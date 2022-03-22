@@ -26,4 +26,4 @@ A user may also add other users to their friends list, and this friends list app
 * Stripe Checkout
 
 ## Created By
-This application was built by [Osama Dahnoun] (https://github.com/Osamadahnoun), [Erinn Schneider] (https://github.com/erinnaschneider), [Austin Gilmore] (https://github.com/austingilmora), and [Claire Wright] (https://github.com/cewright98).
+This application was built by [Osama Dahnoun](https://github.com/Osamadahnoun), [Erinn Schneider](https://github.com/erinnaschneider), [Austin Gilmore](https://github.com/austingilmora), and [Claire Wright](https://github.com/cewright98).
