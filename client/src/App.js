@@ -5,7 +5,6 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-import LandingPage from "./pages/LandingPage/LandingPage";
 import Authorization from "./pages/Authorization/Authorization";
 import Allposts from "./pages/AllPosts/AllPosts";
 import Header from "./components/Header/Header";
