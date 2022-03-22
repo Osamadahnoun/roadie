@@ -28,7 +28,7 @@ const resolvers = {
             return User.findOne({ username })
             .select('-__v -password')
             .populate('friends')
-            .populate('posts')
+            .populate('posts');
         },
         posts: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -99,7 +99,7 @@ const resolvers = {
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { posts: post._id } },
+                    { $push: { posts: { $each:[post._id], $position: 0} } },
                     { new: true }
                 );
 
@@ -112,7 +112,7 @@ const resolvers = {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
-                    { $push: { comments: { commentBody, username: context.user.username } } },
+                    { $push: { comments: {$each: [{ commentBody, username: context.user.username }], $position: 0 } } },
                     { new: true, runValidators: true }
                 );
 
