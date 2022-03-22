@@ -61,6 +61,7 @@ code {
 .card {
   margin: 0 0 20px 0;
   border-radius: var(--border-radius);
+  border: unset !important;
 }
 
 .card-header {
@@ -79,6 +80,7 @@ code {
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
+  border: 1px solid #0000000a;
 }
 
 .btn {
@@ -105,6 +107,19 @@ code {
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
   background-color: #EDF6F9;
+}
+
+.modal-content{
+  border:unset !important;
+}
+
+.nav-item a.nav-tabs.nav-link{
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.modalTitle .nav-tabs {
+  border-bottom: unset !important;
 }
 
 .mb-4 {
