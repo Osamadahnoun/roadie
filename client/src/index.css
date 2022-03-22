@@ -61,7 +61,6 @@ code {
 
 .card {
   margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
   border-radius: var(--border-radius);
 }
 
@@ -81,6 +80,7 @@ code {
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
+  border: 1px solid #000000a
 }
 
 .btn {
