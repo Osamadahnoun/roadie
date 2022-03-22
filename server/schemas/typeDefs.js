@@ -52,7 +52,7 @@ const typeDefs = gql`
     deleteFriend(friendId: ID!): User
     deletePost(postId: ID!): User
     deleteComment(postId: ID! commentId: ID!): Post
-    editPost(postId: ID!, postText: String!, location: String!, cost: Int, heritages: String, placesToVisit: String, accessibility: String, other: String): Post
+    editPost(postId: ID!, postText: String!, location: String!, locationImage: String, cost: Int, heritages: String, placesToVisit: String, accessibility: String, other: String): Post
   }
 
   type Auth {

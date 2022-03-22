@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -25,8 +25,26 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postText: String!, $location: String!, $locationImage: String, $cost: Int, $heritages: String, $placesToVisit: String, $accessibility: String, $other: String) {
-    addPost(postText: $postText, location: $location, locationImage: $locationImage, cost: $cost, heritages: $heritages, placesToVisit: $placesToVisit, accessibility: $accessibility, other: $other) {
+  mutation addPost(
+    $postText: String!
+    $location: String!
+    $locationImage: String
+    $cost: Int
+    $heritages: String
+    $placesToVisit: String
+    $accessibility: String
+    $other: String
+  ) {
+    addPost(
+      postText: $postText
+      location: $location
+      locationImage: $locationImage
+      cost: $cost
+      heritages: $heritages
+      placesToVisit: $placesToVisit
+      accessibility: $accessibility
+      other: $other
+    ) {
       _id
       postText
       createdAt
@@ -93,7 +111,6 @@ export const DELETE_FRIEND = gql`
   }
 `;
 
-
 export const DELETE_POST = gql`
   mutation deletePost($postId: ID!) {
     deletePost(postId: $postId) {
@@ -116,8 +133,28 @@ export const DELETE_COMMENT = gql`
 `;
 
 export const EDIT_POST = gql`
-  mutation editPost($postId: ID!, $postText: String!, $location: String!, $cost: Int, $heritages: String, $placesToVisit: String, $accessibility: String, $other: String) {
-    editPost(postId: $postId, postText: $postText, location: $location, cost: $cost, heritages: $heritages, placesToVisit: $placesToVisit, accessibility: $accessibility, other: $other) {
+  mutation editPost(
+    $postId: ID!
+    $postText: String!
+    $location: String!
+    $locationImage: String
+    $cost: Int
+    $heritages: String
+    $placesToVisit: String
+    $accessibility: String
+    $other: String
+  ) {
+    editPost(
+      postId: $postId
+      postText: $postText
+      location: $location
+      locationImage: $locationImage
+      cost: $cost
+      heritages: $heritages
+      placesToVisit: $placesToVisit
+      accessibility: $accessibility
+      other: $other
+    ) {
       _id
       postText
       createdAt
