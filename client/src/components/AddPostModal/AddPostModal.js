@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
-import { GET_ALL_POSTS } from "../../utils/queries";
+import { GET_ALL_POSTS, QUERY_ME } from "../../utils/queries";
 
 const AddPostModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -64,7 +64,6 @@ const AddPostModal = ({ children }) => {
         ...characterCount,
         [event.target.id]: event.target.value.length,
       });
-      console.log(locationCount);
     }
   };
 
@@ -77,12 +76,26 @@ const AddPostModal = ({ children }) => {
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
-      const { posts } = cache.readQuery({ query: GET_ALL_POSTS });
+      try {
+        const { posts } = cache.readQuery({ query: GET_ALL_POSTS });
 
-      cache.writeQuery({
-        query: GET_ALL_POSTS,
-        data: { posts: [addPost, ...posts] },
-      });
+        cache.writeQuery({
+          query: GET_ALL_POSTS,
+          data: { posts: [addPost, ...posts] },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, posts: [...me.posts, addPost] } },
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
@@ -110,7 +123,7 @@ const AddPostModal = ({ children }) => {
       setMainPost("");
       onClose();
       toast({
-        title: "Post Creatd!",
+        title: "Log Created!",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -123,19 +136,29 @@ const AddPostModal = ({ children }) => {
 
   return (
     <>
-    
-      <span onClick={onOpen} className="hoverPointer">{children}</span>
-   
+      <span onClick={onOpen} className="hoverPointer">
+        {children}
+      </span>
+
       <Modal isOpen={isOpen} onClose={onClose} size="6xl" className="modal">
         <ModalOverlay className="modalHeader" />
         <ModalContent d="flex" className="modalHeader">
-          <ModalHeader fontSize="2rem" alignSelf="center" className="modalHeader">
+          <ModalHeader
+            fontSize="2rem"
+            alignSelf="center"
+            className="modalHeader"
+          >
             Add Travel Log
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody className="modalHeader">
             <FormControl className="modalHeader">
-              <FormLabel htmlFor="location" fontSize="2rem" mt={5} className="modalHeader">
+              <FormLabel
+                htmlFor="location"
+                fontSize="2rem"
+                mt={5}
+                className="modalHeader"
+              >
                 Location Visited
               </FormLabel>
               <Input
@@ -148,7 +171,12 @@ const AddPostModal = ({ children }) => {
                 value={location}
               />
               Character Count: {locationCount}/100
-              <FormLabel htmlFor="cost" fontSize="2rem" mt={5} className="modalHeader">
+              <FormLabel
+                htmlFor="cost"
+                fontSize="2rem"
+                mt={5}
+                className="modalHeader"
+              >
                 Cost of Travel (USD)
               </FormLabel>
               <Input
@@ -159,7 +187,12 @@ const AddPostModal = ({ children }) => {
                 onChange={handleChange}
                 value={cost}
               />
-              <FormLabel htmlFor="post" fontSize="2rem" mt={5} className="modalHeader">
+              <FormLabel
+                htmlFor="post"
+                fontSize="2rem"
+                mt={5}
+                className="modalHeader"
+              >
                 We want to hear all about your trip!
               </FormLabel>
               <Textarea
@@ -223,7 +256,7 @@ const AddPostModal = ({ children }) => {
           </ModalBody>
 
           <ModalFooter className="modalHeader">
-          <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
+            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
               Share Log!
             </Button>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
@@ -232,7 +265,6 @@ const AddPostModal = ({ children }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
     </>
   );
 };

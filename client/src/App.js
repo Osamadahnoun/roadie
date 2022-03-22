@@ -12,7 +12,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Profile from "./pages/Profile/Profile";
 import { setContext } from "@apollo/client/link/context";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SinglePost from "./pages/SinglePost/SinglePost";
 import "bootstrap/dist/css/bootstrap.min.css";
