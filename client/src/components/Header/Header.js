@@ -25,6 +25,12 @@ const Header = () => {
     }
   }, [data]);
 
+  function submitCheckout() {
+    const loadingSignal = document.getElementById('loadingSignal');
+    loadingSignal.classList.remove('hidden');
+    getCheckout();
+  }
+
   return (
     <div className="w-100">
       <Navbar expand="lg" className="p-3 navBar">
@@ -34,6 +40,7 @@ const Header = () => {
               <p>Roadie</p>
             </Navbar.Brand>
           </div>
+          <div className="hidden loading" id="loadingSignal">Loading...</div>
           <div className='navDiv'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -61,7 +68,7 @@ const Header = () => {
                     <p>Login/Sign Up</p>
                   </Nav.Link>
                 )}
-                <Nav.Link className="hoverPointer" onClick={getCheckout}><p>Donate</p></Nav.Link>
+                <Nav.Link className="hoverPointer" onClick={submitCheckout}><p>Donate</p></Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>

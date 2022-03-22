@@ -34,6 +34,14 @@
   background-color: #83C5BE;
 }
 
+.hidden {
+  display: none;
+}
+
+.loading {
+  font-size: medium;
+  padding-left: 115px;
+}
 
 .modalHeader {
   background-color: #83C5BE;
@@ -57,5 +65,9 @@
   }
   .container {
     flex-direction: column;
+  }
+  .loading {
+    padding-bottom: 15px;
+    padding-left: 10px;
   }
 }

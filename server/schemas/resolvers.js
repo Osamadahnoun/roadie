@@ -43,8 +43,8 @@ const resolvers = {
           const line_items = [];
 
           const product = await stripe.products.create({
-            name: 'donation',
-            description: 'Donate to Roadie!'
+            name: 'Donation',
+            description: "Donate to Roadie's fund to save the Earth's natural habitats!"
           });
 
           const price = await stripe.prices.create({
