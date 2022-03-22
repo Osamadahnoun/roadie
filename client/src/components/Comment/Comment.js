@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Textarea, FormControl, Button, useToast } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
+import './Comment.css'
 
 const Comment = ({ postId }) => {
   const [commentBody, setCommentBody] = useState("");
@@ -41,6 +42,7 @@ const Comment = ({ postId }) => {
       <FormControl className="col-10 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         Character Count: {characterCount}/280
         <Textarea
+          className="textarea"
           placeholder="Leave a comment here"
           fontSize="1.5rem"
           border="solid"
