@@ -8,7 +8,6 @@ import FriendsListModal from "../../components/FriendsListModal/FriendsListModal
 import { Button } from "@chakra-ui/react";
 import { ADD_FRIEND } from "../../utils/mutations";
 
-
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -56,7 +55,7 @@ const Profile = () => {
         <h1 className="profile-title">
           Viewing {userParam ? `${user.username}'s` : "your"} profile
         </h1>
-        {userParam && (
+        {userParam && Auth.loggedIn() && (
           <Button
             bg="#83C5BE"
             color="#006D77"
@@ -74,7 +73,9 @@ const Profile = () => {
         friends={user.friends}
         user={user}
       >
-        <span className="profile-title m-3"><button className="btn friends">Click to view friends list</button></span>
+        <span className="profile-title m-3">
+          <button className="btn friends">Click to view friends list</button>
+        </span>
       </FriendsListModal>
 
       <Posts posts={user.posts} title={`${user.username}'s Logs`} />
