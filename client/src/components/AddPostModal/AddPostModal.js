@@ -27,7 +27,7 @@ const AddPostModal = ({ children }) => {
 
   const [formState, setFormState] = useState({
     location: "",
-    cost: 0,
+    cost: "",
     heritage: "",
     places: "",
     accessibility: "",

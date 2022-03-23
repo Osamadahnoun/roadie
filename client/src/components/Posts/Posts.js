@@ -29,9 +29,9 @@ const Posts = ({ posts }) => {
                 </Card.Title>
                 <Card.Text className="text">{post.postText}</Card.Text>
                 <Card.Title className="border-top pt-2 title">
-                  Cost of Travel
+                  Cost of Travel (USD)
                 </Card.Title>
-                <Card.Text className="text">{post.cost}</Card.Text>
+                <Card.Text className="text">${post.cost}</Card.Text>
                 <Card.Title className="border-top pt-2 title">
                   Heritages | Places to Visit | Accessibility
                 </Card.Title>
@@ -56,8 +56,12 @@ const Posts = ({ posts }) => {
                 {Auth.loggedIn() &&
                   Auth.getProfile().data.username === post.username && (
                     <Card.Title className="border-top title pt-2 d-flex align-items-center">
-                      <div className="editingButton1"><EditPostBtn posts={post} /></div>
-                      <div className="editingButton1"><DeletePostButton posts={post} /></div>
+                      <div className="editingButton1">
+                        <EditPostBtn posts={post} />
+                      </div>
+                      <div className="editingButton1">
+                        <DeletePostButton posts={post} />
+                      </div>
                     </Card.Title>
                   )}
               </Card.Body>
