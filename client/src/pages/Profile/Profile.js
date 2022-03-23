@@ -7,7 +7,7 @@ import Auth from "../../utils/auth";
 import FriendsListModal from "../../components/FriendsListModal/FriendsListModal";
 import { Button } from "@chakra-ui/react";
 import { ADD_FRIEND } from "../../utils/mutations";
-import { FaPlus } from 'react-icons/fa';
+
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -19,7 +19,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
 
   const [friendButton, setFriendButton] = useState(
-    `${<FaPlus />}Add ${userParam} to friends list`
+    `Add ${userParam} to friends list`
   );
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {

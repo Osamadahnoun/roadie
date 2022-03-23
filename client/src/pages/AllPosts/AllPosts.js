@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_POSTS } from "../../utils/queries";
 import AddPostModal from "../../components/AddPostModal/AddPostModal";
 import './AllPosts.css';
-import { FaPlus } from 'react-icons/fa';
 
 const Allposts = () => {
   const { loading, data } = useQuery(GET_ALL_POSTS);
