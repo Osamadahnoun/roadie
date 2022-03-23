@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Signup from "../Authorization/Signup/Signup";
 import Login from "../Authorization/Login/Login";
-
+import FriendsListModal from "../FriendsListModal/FriendsListModal"
 import { QUERY_CHECKOUT } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";

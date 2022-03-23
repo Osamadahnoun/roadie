@@ -57,7 +57,7 @@ const DeletePostButton = ({ posts }) => {
   return (
     <div>
       <button
-        className="bg-danger rounded p-3 text-white"
+        className="btn d-block rounded p-3 text-white edit"
         onClick={handleDelete}
       >
         Delete Log
