@@ -15,6 +15,14 @@ Logged in users also have the option of commenting on posts to share their respo
 
 A user may also add other users to their friends list, and this friends list appears on their profile page along with their own posts. The names included in the friends list act as links that direct you to that user's profile page.
 
+## Screenshots
+
+![Screen Shot 2022-03-23 at 7 04 55 PM](https://user-images.githubusercontent.com/90212939/159811551-5895db9a-28b5-455d-87a0-32f303cb93f2.png)
+
+![Screen Shot 2022-03-23 at 7 05 09 PM](https://user-images.githubusercontent.com/90212939/159811557-babeec01-91a5-46df-8a54-c9dd8e93207c.png)
+
+![Screen Shot 2022-03-23 at 7 05 39 PM](https://user-images.githubusercontent.com/90212939/159811562-ea02ed77-6ee6-4ba4-9ce9-6de9364cc201.png)
+
 ## Built With
 * Bootstrap
 * Chakra
